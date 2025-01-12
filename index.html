@@ -23,6 +23,23 @@
                 font-size: 14px;
             }
         }
+        .footer {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            left: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            position: sticky;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -71,13 +88,13 @@
             <p id="quote" style="margin-top: 20px; font-size: 18px; color: #333;"></p> <!-- Added quote placeholder -->
         </div>
     </div>
-    <footer style="position: fixed; bottom: 0; width: 100%;"> <!-- Reverted footer position to fixed -->
+    <div class="footer">
         <a href="https://www.linkedin.com/in/omkumar0417" class="connect-button" style="float: left;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn"> Connect on LinkedIn
         </a>
-        <p style="text-align: center;">&copy; 2025 SRM Grade Calculator by Om Kumar. All rights reserved.</p> <!-- Changed footer text -->
-        <a href="about.html" target="_blank" style="color: white; float: right; margin-right: 30px;">About Me</a> <!-- Added About Me link -->
-    </footer>
+        <p style="text-align: center;">&copy; 2025 SRM Grade Calculator by Om Kumar. All rights reserved.</p>
+        <a href="about.html" target="_blank" style="color: white; float: right; margin-right: 30px;">About Me</a>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
