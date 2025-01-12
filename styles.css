@@ -10,6 +10,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 150px; /* Increased padding to allow extra scroll and space for footer */
+    margin-top: 60px; /* Added margin to push content below the header */
 }
 
 .container {
@@ -20,6 +25,7 @@ body {
     background-color: rgba(255, 255, 255, 0.9); /* Adjusted opacity */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    margin-bottom: 100px; /* Added margin-bottom to create space above the footer */
 }
 
 h1 {
@@ -155,8 +161,10 @@ footer {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center; /* Center-align the text */
-    position: fixed;
-    bottom: 0;
+    position: fixed; /* Changed position to fixed */
+    bottom: 0; /* Ensure footer stays at the bottom */
+    width: 100%; /* Ensure footer spans the full width */
+    margin-top: 20px; /* Added margin-top to create space above the footer */
     left: 10px; /* Add margin to the left */
     right: 10px; /* Add margin to the right */
     z-index: 1000;
