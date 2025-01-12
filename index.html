@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Grade Calculator</title> <!-- Changed title -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 50px;
+                padding: 10px;
+            }
+            table, th, td {
+                font-size: 14px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            footer p, footer a {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SRM Grade Calculator 🎓</h1> <!-- Changed header text with emoji -->
+    </header>
+    <div class="container" style="margin-top: 100px;"> <!-- Adjusted margin-top to move the container down -->
+        <h1>Grade Calculator</h1> <!-- Changed heading -->
+        <form>
+            <table>
+                <tr>
+                    <th>SUBJECT</th>
+                    <th>CREDITS</th>
+                    <th>GRADE</th>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td><input type="number" class="cred form-control" min="0" size="5"></td> <!-- Applied smaller size -->
+                    <td>
+                        <select class="opt form-control">
+                            <option>O</option>
+                            <option>A+</option>
+                            <option>A</option>
+                            <option>B+</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>W</option>
+                            <option>F</option>
+                            <option>Ab</option>
+                            <option>I</option>
+                            <option>*</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- Additional rows will be added here dynamically -->
+            </table>
+            <button type="button" id="more">Add More</button>
+            <button type="button" id="go">Calculate GPA</button> <!-- Changed button text -->
+            <button type="button" id="reset" class="hidden">Reset</button>
+        </form>
+        <div id="result" class="hidden">
+            <h2>Your GPA: <span id="gpa"></span></h2> <!-- Changed result text -->
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <p id="quote" style="margin-top: 20px; font-size: 18px; color: #333;"></p> <!-- Added quote placeholder -->
+        </div>
+    </div>
+    <footer>
+        <a href="https://www.linkedin.com/in/omkumar0417" class="connect-button" style="float: left;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn"> Connect on LinkedIn
+        </a>
+        <p style="text-align: center;">&copy; 2025 SRM Grade Calculator by Om Kumar. All rights reserved.</p> <!-- Changed footer text -->
+        <a href="about.html" target="_blank" style="color: white; float: right; margin-right: 30px;">About Me</a> <!-- Added About Me link -->
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
