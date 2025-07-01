@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://srmgradecalculator.vercel.app/sitemap.xml
