@@ -1,0 +1,56 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.semester-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.serial {
+  font-size: 1rem;
+  color: #fff;
+  width: 1.2rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+input.gpa,
+input.credits {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #0f172a;
+  flex: 1;
+  min-width: 100px;
+}
+
+#cgpa-result {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .semester-row {
+    gap: 0.5rem;
+  }
+  input.gpa,
+  input.credits {
+    font-size: 0.9rem;
+  }
+  .serial {
+    font-size: 0.9rem;
+    width: auto;
+  }
+}

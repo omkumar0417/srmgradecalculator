@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SRM GPA & CGPA Calculator | Fast, accurate and student-friendly calculator built by Om Kumar for SRM University.">
-  <meta name="keywords" content="SRM GPA Calculator, SRM CGPA Calculator, SRM Grade Tool, SGPA calculator, CGPA calculator, Om Kumar, SRM University">
-  <title>SRM GPA & CGPA Calculator</title>
-  <meta property="og:title" content="SRM GPA & CGPA Calculator">
+  <meta name="description" content="SRM GPA Calculator | Calculate your SGPA easily with credits and grades using this smart tool by Om Kumar.">
+  <meta name="keywords" content="SRM GPA Calculator, SGPA calculator, SRM Grade Tool, GPA Calculator SRM, Om Kumar, SRM University">
+  <title>GPA Calculator | SRM Grade Tool</title>
+  <!-- Open Graph Meta Tags -->
+<meta property="og:title" content="SRM GPA & CGPA Calculator">
 <meta property="og:description" content="Accurately calculate your GPA & CGPA for SRM University. Smart, fast, and mobile-friendly.">
 <meta property="og:image" content="https://srmgradecalculator.vercel.app/image.png"> 
 <meta property="og:url" content="https://srmgradecalculator.vercel.app">
 <meta name="twitter:card" content="summary_large_image">
+
+
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gpa.css" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
 
@@ -29,13 +33,36 @@
   <div class="background-image"></div>
   <div class="overlay">
     <div class="card">
-      <h1 class="title">🎓 SRM Grade Calculator</h1>
-      <p class="subtitle">Your smart tool for accurate GPA and CGPA calculations — made for SRM students.</p>
-      <div class="buttons">
-        <a href="gpa.html" class="btn gpa-btn">Calculate GPA</a>
-        <a href="cgpa.html" class="btn cgpa-btn">Calculate CGPA</a>
-      </div>
+      <h1 class="title">🎯 GPA Calculator</h1>
+      <p class="subtitle">Enter your subjects, credits, and grades to calculate your SGPA</p>
+
+      <form id="gpa-form">
+        <div id="subject-container">
+          <div class="input-row">
+            <span class="serial">1.</span>
+            <input type="number" placeholder="Credits" class="credits" min="0" required />
+            <select class="grade">
+              <option value="10">O</option>
+              <option value="9">A+</option>
+              <option value="8">A</option>
+              <option value="7">B+</option>
+              <option value="6">B</option>
+              <option value="5">C</option>
+              <option value="0">F / Ab / W / I</option>
+            </select>
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="button" id="add-subject" class="btn gpa-btn">➕ Add Subject</button>
+          <button type="submit" class="btn cgpa-btn">Calculate GPA</button>
+        </div>
+      </form>
+
+      <div id="result" class="subtitle" style="margin-top: 1rem;"></div>
     </div>
+<div class="back-link">
+  <a href="index.html" class="btn back-btn">← Back to Home</a>
+</div>
 
     <footer>
       <p>&copy; 2025 Om Kumar • SRM University</p>
@@ -48,5 +75,6 @@
       </div>
     </footer>
   </div>
+  <script src="gpa.js"></script>
 </body>
 </html>
