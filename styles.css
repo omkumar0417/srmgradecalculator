@@ -1130,7 +1130,60 @@ footer {
   }
 }
 
+@media (max-width: 960px) {
+  .site-shell {
+    width: min(100%, calc(100% - 1.2rem));
+  }
+
+  .landing-grid,
+  .calculator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trust-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .result-panel {
+    position: static;
+  }
+
+  .visual-panel {
+    min-height: 340px;
+  }
+}
+
 @media (max-width: 600px) {
+  .topbar {
+    gap: 0.75rem;
+  }
+
+  .feature-strip,
+  .feature-grid,
+  .trust-band {
+    grid-template-columns: 1fr;
+  }
+
+  .scoreboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scoreboard-value {
+    font-size: clamp(3.2rem, 20vw, 4.6rem);
+  }
+
+  .scoreboard-copy {
+    max-width: none;
+  }
+
   .buttons {
     width: 100%;
   }
@@ -1158,5 +1211,52 @@ footer {
   .compact-note {
     padding-left: 0.9rem;
     padding-right: 0.9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-shell {
+    width: min(100%, calc(100% - 0.75rem));
+  }
+
+  .topbar {
+    padding: 0.8rem 0.9rem;
+  }
+
+  .panel,
+  .card,
+  .about-card {
+    border-radius: 24px;
+  }
+
+  .hero-panel,
+  .content-panel,
+  .stat-card,
+  .visual-panel,
+  .compact-panel {
+    padding: 1rem;
+  }
+
+  .hero-kicker,
+  .eyebrow {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .scoreboard {
+    padding: 1rem;
+    border-radius: 22px;
+  }
+
+  .scoreboard-grid div {
+    padding: 0.7rem;
+  }
+
+  .data-table {
+    min-width: 460px;
+  }
+
+  .buttons {
+    gap: 0.7rem;
   }
 }
