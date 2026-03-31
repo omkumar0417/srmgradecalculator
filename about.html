@@ -23,7 +23,29 @@
   <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta name="twitter:image:alt" content="About the SRM Grade Calculator website" />
   <meta name="theme-color" content="#111317" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0e0e12; color: #f0f0f8; font: 500 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .site-shell { max-width: 1180px; margin: 0 auto; padding: 1rem; }
+    .topbar, .panel { background: #1c1c25; border: 1px solid rgba(255,255,255,0.06); border-radius: 22px; }
+    .topbar { display: flex; flex-direction: column; gap: 0.6rem; padding: 0.8rem 1rem; }
+    .nav-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; }
+    .nav-link { display: inline-flex; padding: 0.42rem 0.78rem; border-radius: 999px; background: #202028; }
+    .landing-grid, .calculator-grid { display: grid; gap: 1rem; }
+    .hero-panel, .content-panel { padding: 1.25rem; }
+    .title { margin: 0 0 0.8rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05; }
+    .title-accent { display: block; color: #b9e85c; }
+    .subtitle, .brand-subtitle, .tool-note { color: rgba(240,240,248,0.74); }
+    .buttons, .hero-actions, .trust-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1rem; border-radius: 16px; background: #b9e85c; color: #0a1400; font-weight: 700; }
+    @media (max-width: 680px) { .site-shell { padding: 0.75rem; } .hero-panel, .content-panel { padding: 1rem; } .buttons, .hero-actions { flex-direction: column; } .btn { width: 100%; } }
+    @media (min-width: 961px) { .topbar { flex-direction: row; justify-content: space-between; align-items: center; } .landing-grid { grid-template-columns: 1.03fr 0.97fr; } .calculator-grid--tool { grid-template-columns: minmax(0, 1fr) 360px; } .calculator-grid--cgpa { grid-template-columns: 360px minmax(0, 1fr); } .calculator-grid--gpa { grid-template-columns: 400px minmax(0, 1fr); } }
+  </style>
+  <link rel="preload" href="styles.css" as="style" fetchpriority="high" />
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="styles.css" /></noscript>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>" />
   <script type="application/ld+json">
     {

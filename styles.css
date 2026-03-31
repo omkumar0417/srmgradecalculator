@@ -1,7 +1,6 @@
 /* ─── Design Tokens ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700;800&display=swap');
-
 :root {
+  color-scheme: dark;
   --ink: #0e0e12;
   --ink-2: #17171e;
   --ink-3: #202028;
@@ -22,8 +21,8 @@
   --r: 16px;
   --r-lg: 22px;
   --r-xl: 30px;
-  --font-display: 'DM Serif Display', serif;
-  --font-body: 'Syne', sans-serif;
+  --font-display: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 [data-theme="light"] {
@@ -102,7 +101,8 @@ body::after {
   border-radius: var(--r-lg);
   background: var(--surface);
   border: 1px solid var(--border);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .brand-lockup {
@@ -1210,25 +1210,65 @@ label.metric-card { cursor: text; }
 /* ─── Sticky result panel on mobile ─────────────────────── */
 .sticky-mobile { align-self: start; }
 
+/* ─── Deferred sections ──────────────────────────────────── */
+.compact-panel,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 420px;
+}
+
 /* ─── Focus ──────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--lime);
   outline-offset: 2px;
 }
 
-/* ─── Animations ─────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ─── Motion & paint control ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-.panel { animation: fadeUp 0.5s ease both; }
-.panel:nth-child(1) { animation-delay: 0.05s; }
-.panel:nth-child(2) { animation-delay: 0.1s; }
-.panel:nth-child(3) { animation-delay: 0.15s; }
+@media (prefers-reduced-motion: no-preference) and (min-width: 681px) {
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel { animation: fadeUp 0.35s ease both; }
+  .panel:nth-child(1) { animation-delay: 0.04s; }
+  .panel:nth-child(2) { animation-delay: 0.08s; }
+  .panel:nth-child(3) { animation-delay: 0.12s; }
+}
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 960px) {
+  .visual-panel {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 640px;
+  }
+
+  body::before,
+  body::after,
+  .hero-panel::before,
+  .utility-panel::before {
+    display: none;
+  }
+
+  .topbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .btn:hover,
+  .gpa-btn:hover,
+  .cgpa-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
   .landing-grid {
     grid-template-columns: 1fr;
   }
