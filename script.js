@@ -64,14 +64,26 @@ const quotes = {
 
 let count = 1;
 
-document.getElementById("go").addEventListener("click", calculate);
-document.getElementById("reset").addEventListener("click", function() {
-    document.getElementById("go").classList.remove("hidden");
-    document.getElementById("reset").classList.add("hidden");
-    document.getElementById("result").classList.add("hidden");
-    document.getElementById("more").classList.remove("hidden");
-    document.querySelector("form").reset();
-    document.querySelector("table").innerHTML = `
+const goButton = document.getElementById("go");
+const resetButton = document.getElementById("reset");
+const moreButton = document.getElementById("more");
+const resultEl = document.getElementById("result");
+const gpaEl = document.getElementById("gpa");
+const quoteEl = document.getElementById("quote");
+const progressBar = document.querySelector(".progress-bar");
+const formEl = document.querySelector("form");
+
+if (goButton) goButton.addEventListener("click", calculate);
+if (resetButton) {
+    resetButton.addEventListener("click", function() {
+    if (goButton) goButton.classList.remove("hidden");
+    resetButton.classList.add("hidden");
+    if (resultEl) resultEl.classList.add("hidden");
+    if (moreButton) moreButton.classList.remove("hidden");
+    if (formEl) formEl.reset();
+    const table = formEl ? formEl.querySelector("table") : null;
+    if (!table) return;
+    table.innerHTML = `
         <tr>
             <th>#</th>
             <th>Credits</th>
@@ -98,7 +110,8 @@ document.getElementById("reset").addEventListener("click", function() {
         </tr>
     `;
     count = 1;
-});
+    });
+}
 
 function calculate(event) {
     const grade_list = document.querySelectorAll(".opt");
@@ -113,22 +126,24 @@ function calculate(event) {
     }
     let gpa = (points / sum_credits);
     let percent = (gpa * 10).toFixed(0);
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("gpa").textContent = gpa.toFixed(2);
-    document.querySelector(".progress-bar").style.width = percent + "%";
-    document.getElementById("reset").classList.remove("hidden");
+    if (resultEl) resultEl.classList.remove("hidden");
+    if (gpaEl) gpaEl.textContent = gpa.toFixed(2);
+    if (progressBar) progressBar.style.width = percent + "%";
+    if (resetButton) resetButton.classList.remove("hidden");
     
     // Display motivational quote
     let quote = quotes[Math.floor(gpa)] || "Keep pushing forward!";
-    document.getElementById("quote").textContent = quote;
+    if (quoteEl) quoteEl.textContent = quote;
 
     window.scrollTo(0, 0);
-    event.stopPropagation();
+    if (event) event.stopPropagation();
 }
 
-document.getElementById("more").addEventListener("click", function(event) {
+if (moreButton) moreButton.addEventListener("click", function(event) {
     count += 1;
-    document.querySelector("form table").insertAdjacentHTML("beforeend", `
+    const table = formEl ? formEl.querySelector("table") : null;
+    if (!table) return;
+    table.insertAdjacentHTML("beforeend", `
         <tr>
             <td>${count}.</td>
             <td><input type="number" class="cred form-control" min="0"></td>

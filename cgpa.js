@@ -30,5 +30,8 @@ document.getElementById('cgpa-form').addEventListener('submit', (e) => {
 
   const cgpa = totalCredits ? (weightedSum / totalCredits).toFixed(2) : 0;
   document.getElementById('cgpa-result').innerText = `📘 Your CGPA is: ${cgpa}`;
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'cgpa_calculated');
+  }
 });
-gtag('event', 'cgpa_calculated');

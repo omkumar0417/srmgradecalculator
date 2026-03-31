@@ -38,5 +38,8 @@ document.getElementById('gpa-form').addEventListener('submit', (e) => {
 
   const gpa = totalCredits ? (totalPoints / totalCredits).toFixed(2) : 0;
   document.getElementById('result').innerText = `🎓 Your GPA is: ${gpa}`;
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'gpa_calculated');
+  }
 });
-gtag('event', 'gpa_calculated');
