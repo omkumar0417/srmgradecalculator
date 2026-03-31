@@ -57,7 +57,7 @@
       <a href="index.html" class="brand">SRM Grade Calculator</a>
     </header>
 
-    <main class="calculator-grid calculator-grid--tool">
+    <main class="calculator-grid calculator-grid--tool calculator-grid--gpa">
 
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">GPA calculator</span>
@@ -71,6 +71,9 @@
       </section>
 
       <section class="panel content-panel calculator-input">
+        <div class="panel-head">
+          <h2 class="section-title">Enter subjects</h2>
+        </div>
         <p class="tool-note">Enter only completed subjects for the semester you want to calculate.</p>
         <form id="gpa-form" novalidate>
           <div id="subject-container" class="input-stack">
@@ -85,6 +88,7 @@
                 <option value="7">B+</option>
                 <option value="6">B</option>
                 <option value="5.5">C</option>
+                <option value="0">*</option>
                 <option value="0">F / Ab / W / I</option>
               </select>
             </div>
@@ -100,51 +104,34 @@
       <aside class="panel content-panel result-panel result-spotlight sticky-mobile">
         <div class="panel-head">
           <h2 class="section-title">Result</h2>
-          <span class="pill" id="gpa-status">Ready</span>
         </div>
         <div id="result" class="result-value">
           —<small>Fill in subjects to see your GPA.</small>
         </div>
         <div class="metric-grid" id="gpa-metrics"></div>
-        <div class="action-row">
-          <button type="button" id="copy-result" class="btn ghost-btn">Copy</button>
-          <button type="button" id="share-result" class="btn ghost-btn">Share</button>
-        </div>
-        <p class="breakdown-title">Breakdown</p>
-        <div class="table-wrap">
-          <table class="data-table" aria-label="GPA breakdown">
-            <thead>
-              <tr>
-                <th>Subject</th>
-                <th>Credits</th>
-                <th>Grade</th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody id="gpa-breakdown">
-              <tr><td class="empty-state" colspan="4">No data yet.</td></tr>
-            </tbody>
-          </table>
-        </div>
       </aside>
     </main>
 
     <section class="panel compact-panel">
-      <details class="accordion" open>
+      <details class="accordion">
         <summary>Grade chart</summary>
         <div class="table-wrap" style="margin:0 1.5rem 0">
           <table class="data-table">
             <thead>
-              <tr><th>Grade</th><th>Points</th></tr>
+              <tr><th>Grade</th><th>Min.%</th><th>Max%.</th><th>Result</th></tr>
             </thead>
             <tbody>
-              <tr><td>O</td><td>10</td></tr>
-              <tr><td>A+</td><td>9</td></tr>
-              <tr><td>A</td><td>8</td></tr>
-              <tr><td>B+</td><td>7</td></tr>
-              <tr><td>B</td><td>6</td></tr>
-              <tr><td>C</td><td>5.5</td></tr>
-              <tr><td>F / Ab / W / I</td><td>0</td></tr>
+              <tr><td>O</td><td>91.00</td><td>100.00</td><td>PASS</td></tr>
+              <tr><td>A+</td><td>81.00</td><td>90.00</td><td>PASS</td></tr>
+              <tr><td>A</td><td>71.00</td><td>80.00</td><td>PASS</td></tr>
+              <tr><td>B+</td><td>61.00</td><td>70.00</td><td>PASS</td></tr>
+              <tr><td>B</td><td>56.00</td><td>60.00</td><td>PASS</td></tr>
+              <tr><td>C</td><td>50.00</td><td>55.00</td><td>PASS</td></tr>
+              <tr><td>Ab</td><td>0.00</td><td>100.00</td><td>INCOMPLETE</td></tr>
+              <tr><td>*</td><td>0.00</td><td>100.00</td><td>WITHHELD</td></tr>
+              <tr><td>I</td><td>0.00</td><td>100.00</td><td>FAIL</td></tr>
+              <tr><td>W</td><td>0.00</td><td>100.00</td><td>FAIL</td></tr>
+              <tr><td>F</td><td>0.00</td><td>49.00</td><td>FAIL</td></tr>
             </tbody>
           </table>
         </div>
@@ -152,16 +139,26 @@
       </details>
 
       <details class="accordion">
-        <summary>History</summary>
-        <ul id="gpa-history" class="history-list"></ul>
-        <div class="buttons" style="padding-top:0.6rem">
-          <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
-        </div>
+        <summary>How it works</summary>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. F, Ab, W, I, and * count as 0 points. GPA = total weighted points ÷ total credits.</p>
       </details>
 
       <details class="accordion">
-        <summary>How it works</summary>
-        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. F, Ab, W, and I count as 0 points. GPA = total weighted points ÷ total credits.</p>
+        <summary>Common questions</summary>
+        <div class="faq-stack">
+          <div class="faq-item">
+            <strong>Do F, Ab, W, I, and * affect GPA?</strong>
+            <p>Yes. They are treated as 0 grade points in the GPA calculation.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Should I enter all registered subjects?</strong>
+            <p>Enter the completed subjects for the semester you want to calculate.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I leave a row blank?</strong>
+            <p>Yes. Fully blank rows are ignored, but partially filled rows are flagged.</p>
+          </div>
+        </div>
       </details>
     </section>
 

@@ -57,20 +57,22 @@
       <a href="index.html" class="brand">SRM Grade Calculator</a>
     </header>
 
-    <main class="calculator-grid calculator-grid--tool">
+    <main class="calculator-grid calculator-grid--tool calculator-grid--cgpa">
 
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">CGPA calculator</span>
         <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">Track CGPA and project what comes next.</h1>
-        <p class="subtitle" style="margin-top:0; max-width:60ch;">Enter semester GPA and credits, see your current CGPA and a projection for future semesters — all in one screen.</p>
+        <p class="subtitle" style="margin-top:0; max-width:56ch;">Enter semester GPA and credits to get your current CGPA in one clean screen.</p>
         <div class="trust-row" style="margin-bottom:0;">
-          <span class="trust-chip">Current + projected CGPA</span>
+          <span class="trust-chip">Semester-wise calculation</span>
           <span class="trust-chip">Semester breakdown</span>
-          <span class="trust-chip">No sign in needed</span>
         </div>
       </section>
 
       <section class="panel content-panel calculator-input">
+        <div class="panel-head">
+          <h2 class="section-title">Enter semesters</h2>
+        </div>
         <p class="tool-note">One row per completed semester. Leave a row blank to skip it.</p>
         <form id="cgpa-form" novalidate>
           <div id="semester-container" class="input-stack">
@@ -91,85 +93,36 @@
       <aside class="panel content-panel result-panel result-spotlight sticky-mobile">
         <div class="panel-head">
           <h2 class="section-title">Result</h2>
-          <span class="pill" id="cgpa-status">Ready</span>
         </div>
         <div id="cgpa-result" class="result-value">
           —<small>Add semester GPA and credits.</small>
         </div>
         <div class="metric-grid" id="cgpa-metrics"></div>
-        <div class="action-row">
-          <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy</button>
-          <button type="button" id="share-cgpa" class="btn ghost-btn">Share</button>
-        </div>
-        <p class="breakdown-title">Breakdown</p>
-        <div class="table-wrap">
-          <table class="data-table" aria-label="CGPA breakdown">
-            <thead>
-              <tr>
-                <th>Semester</th>
-                <th>GPA</th>
-                <th>Credits</th>
-                <th>Weighted</th>
-              </tr>
-            </thead>
-            <tbody id="cgpa-breakdown">
-              <tr><td class="empty-state" colspan="4">No data yet.</td></tr>
-            </tbody>
-          </table>
-        </div>
       </aside>
     </main>
 
     <section class="panel compact-panel">
-      <details class="accordion" open>
-        <summary>Projected CGPA</summary>
-        <div style="padding: 0 1.5rem 0.8rem;">
-          <form id="projection-form" novalidate>
-            <div class="metric-grid" style="grid-template-columns:1fr 1fr; margin-top:0;">
-              <label class="metric-card">
-                <span>Current CGPA</span>
-                <input id="projection-current-cgpa" type="number" step="0.01" min="0" max="10" class="field" placeholder="Auto-filled" style="margin-top:0.35rem;">
-              </label>
-              <label class="metric-card">
-                <span>Completed credits</span>
-                <input id="projection-current-credits" type="number" step="0.5" min="0" class="field" placeholder="Auto-filled" style="margin-top:0.35rem;">
-              </label>
-            </div>
-            <div id="projection-container" class="input-stack">
-              <div class="semester-row" data-row="1">
-                <span class="serial">1.</span>
-                <input type="number" step="0.01" placeholder="Expected GPA" class="forecast-gpa field" min="0" max="10" inputmode="decimal">
-                <input type="number" placeholder="Credits" class="forecast-credits field" min="0" step="0.5" inputmode="decimal">
-              </div>
-            </div>
-            <div class="buttons">
-              <button type="button" id="add-forecast-semester" class="btn ghost-btn">+ Add semester</button>
-              <button type="submit" class="btn cgpa-btn">Calculate projection</button>
-            </div>
-          </form>
-          <p id="projection-message" class="message" aria-live="polite"></p>
-          <div id="projection-result" class="result-value" style="margin-top:0.9rem; font-size:clamp(2rem,4vw,2.8rem);">
-            —<small>Enter current CGPA and future semesters.</small>
-          </div>
-          <div class="metric-grid" id="projection-metrics" style="grid-template-columns:repeat(3,1fr);margin-top:0.8rem;"></div>
-          <div class="action-row">
-            <button type="button" id="copy-projection" class="btn ghost-btn">Copy</button>
-            <button type="button" id="share-projection" class="btn ghost-btn">Share</button>
-          </div>
-        </div>
-      </details>
-
-      <details class="accordion">
-        <summary>History</summary>
-        <ul id="cgpa-history" class="history-list"></ul>
-        <div class="buttons" style="padding-top:0.6rem">
-          <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
-        </div>
-      </details>
-
       <details class="accordion">
         <summary>How it works</summary>
-        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. Projection uses your current CGPA plus future GPA inputs to compute a weighted average across all credits.</p>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. CGPA is calculated as total weighted GPA points divided by total completed credits.</p>
+      </details>
+
+      <details class="accordion">
+        <summary>Common questions</summary>
+        <div class="faq-stack">
+          <div class="faq-item">
+            <strong>What should I enter in each row?</strong>
+            <p>Enter one completed semester GPA and its total credits in each row.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I skip a semester row?</strong>
+            <p>Yes. Blank rows are ignored, but partially filled rows are flagged.</p>
+          </div>
+          <div class="faq-item">
+            <strong>How is CGPA calculated?</strong>
+            <p>CGPA is the total weighted GPA points divided by the total completed credits.</p>
+          </div>
+        </div>
       </details>
     </section>
 

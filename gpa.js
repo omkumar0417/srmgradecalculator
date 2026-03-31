@@ -1,4 +1,3 @@
-const GPA_HISTORY_KEY = 'srmgrade-gpa-history';
 const gradeLabels = {
   '10': 'O',
   '9': 'A+',
@@ -6,7 +5,7 @@ const gradeLabels = {
   '7': 'B+',
   '6': 'B',
   '5.5': 'C',
-  '0': 'F / Ab / W / I',
+  '0': '* / Withheld / F / Ab / W / I',
 };
 
 const gpaForm = document.getElementById('gpa-form');
@@ -14,63 +13,19 @@ const subjectContainer = document.getElementById('subject-container');
 const addSubjectButton = document.getElementById('add-subject');
 const resultEl = document.getElementById('result');
 const metricsEl = document.getElementById('gpa-metrics');
-const breakdownEl = document.getElementById('gpa-breakdown');
 const messageEl = document.getElementById('gpa-message');
-const statusEl = document.getElementById('gpa-status');
-const copyButton = document.getElementById('copy-result');
-const shareButton = document.getElementById('share-result');
-const historyEl = document.getElementById('gpa-history');
-const clearHistoryButton = document.getElementById('clear-history');
 
 let subjectCount = subjectContainer ? subjectContainer.querySelectorAll('.input-row').length : 0;
-let lastSummaryText = 'No GPA calculation yet.';
+
+function setResultState(isEmpty) {
+  if (!resultEl) return;
+  resultEl.classList.toggle('is-empty', isEmpty);
+}
 
 function setMessage(text, tone = '') {
   if (!messageEl) return;
   messageEl.textContent = text;
   messageEl.className = `message${tone ? ` ${tone}` : ''}`;
-}
-
-function formatTimestamp(value) {
-  return new Date(value).toLocaleString([], {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  });
-}
-
-function getStoredHistory() {
-  try {
-    return JSON.parse(localStorage.getItem(GPA_HISTORY_KEY) || '[]');
-  } catch {
-    return [];
-  }
-}
-
-function saveHistory(entry) {
-  const history = getStoredHistory();
-  history.unshift(entry);
-  try {
-    localStorage.setItem(GPA_HISTORY_KEY, JSON.stringify(history.slice(0, 8)));
-  } catch {
-    // Ignore storage failures.
-  }
-}
-
-function renderHistory() {
-  if (!historyEl) return;
-  const history = getStoredHistory();
-  if (!history.length) {
-    historyEl.innerHTML = '<li class="history-item"><strong>No history yet</strong><span class="muted">Your recent GPA calculations will appear here.</span></li>';
-    return;
-  }
-
-  historyEl.innerHTML = history.map((item) => `
-    <li class="history-item">
-      <strong>GPA ${item.gpa}</strong>
-      <span class="muted">${item.credits} credits • ${item.subjects} subjects</span><br />
-      <span class="muted">${formatTimestamp(item.timestamp)}</span>
-    </li>
-  `).join('');
 }
 
 function refreshRowNumbers() {
@@ -98,6 +53,7 @@ function addSubjectRow() {
       <option value="7">B+</option>
       <option value="6">B</option>
       <option value="5.5">C</option>
+      <option value="0">*</option>
       <option value="0">F / Ab / W / I</option>
     </select>
   `;
@@ -153,6 +109,7 @@ function renderResult(rows, totalCredits, totalPoints, gpa) {
   if (resultEl) {
     resultEl.innerHTML = `${gpa.toFixed(2)}<small>from ${totalCredits.toFixed(2)} total credits</small>`;
   }
+  setResultState(false);
 
   if (metricsEl) {
     metricsEl.innerHTML = `
@@ -161,26 +118,6 @@ function renderResult(rows, totalCredits, totalPoints, gpa) {
       <div class="metric-card"><span>Subjects</span><strong>${rows.length}</strong></div>
     `;
   }
-
-  if (breakdownEl) {
-    breakdownEl.innerHTML = rows.map((row) => `
-      <tr>
-        <td>Subject ${row.subject}</td>
-        <td>${row.credits.toFixed(2)}</td>
-        <td>${row.gradeLabel}</td>
-        <td>${row.points.toFixed(2)}</td>
-      </tr>
-    `).join('');
-  }
-
-  lastSummaryText = [
-    'SRM GPA Calculator',
-    `GPA: ${gpa.toFixed(2)}`,
-    `Credits: ${totalCredits.toFixed(2)}`,
-    `Points: ${totalPoints.toFixed(2)}`,
-    'Breakdown:',
-    ...rows.map((row) => `- Subject ${row.subject}: ${row.credits.toFixed(2)} credits, ${row.gradeLabel}, ${row.points.toFixed(2)} points`),
-  ].join('\n');
 }
 
 function calculateGpa() {
@@ -189,9 +126,8 @@ function calculateGpa() {
 
   if (parsed.error) {
     setMessage(parsed.error, 'error');
-    if (statusEl) statusEl.textContent = 'Check entries';
-    if (breakdownEl) breakdownEl.innerHTML = '<tr><td class="empty-state" colspan="4">Fix the highlighted row to continue.</td></tr>';
     if (resultEl) resultEl.innerHTML = 'Calculation paused.<small>Fix the highlighted row to see the GPA.</small>';
+    setResultState(true);
     if (metricsEl) metricsEl.innerHTML = '';
     return;
   }
@@ -199,11 +135,9 @@ function calculateGpa() {
   const rows = parsed.rows;
   if (!rows.length) {
     setMessage('Add at least one completed subject before calculating GPA.', 'error');
-    if (statusEl) statusEl.textContent = 'No data';
-    if (breakdownEl) breakdownEl.innerHTML = '<tr><td class="empty-state" colspan="4">No completed subjects yet.</td></tr>';
     if (resultEl) resultEl.innerHTML = 'No calculation yet.<small>Fill in at least one subject.</small>';
+    setResultState(true);
     if (metricsEl) metricsEl.innerHTML = '';
-    lastSummaryText = 'No GPA calculation yet.';
     return;
   }
 
@@ -213,45 +147,10 @@ function calculateGpa() {
 
   renderResult(rows, totalCredits, totalPoints, gpa);
   setMessage(`Calculated GPA ${gpa.toFixed(2)} from ${rows.length} subjects.`, 'success');
-  if (statusEl) statusEl.textContent = 'Calculated';
-
-  saveHistory({
-    gpa: gpa.toFixed(2),
-    credits: totalCredits.toFixed(2),
-    subjects: rows.length,
-    timestamp: Date.now(),
-  });
-  renderHistory();
 
   if (typeof gtag === 'function') {
     gtag('event', 'gpa_calculated');
   }
-}
-
-async function copySummary() {
-  try {
-    await navigator.clipboard.writeText(lastSummaryText);
-    setMessage('Result copied to clipboard.', 'success');
-  } catch {
-    setMessage('Copy failed in this browser.', 'error');
-  }
-}
-
-async function shareSummary() {
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: 'SRM GPA result',
-        text: lastSummaryText,
-        url: window.location.href,
-      });
-      setMessage('Result shared successfully.', 'success');
-      return;
-    } catch {
-      // fall back to clipboard below
-    }
-  }
-  await copySummary();
 }
 
 if (addSubjectButton) {
@@ -265,30 +164,10 @@ if (gpaForm) {
   });
 }
 
-if (copyButton) {
-  copyButton.addEventListener('click', copySummary);
-}
-
-if (shareButton) {
-  shareButton.addEventListener('click', shareSummary);
-}
-
-if (clearHistoryButton) {
-  clearHistoryButton.addEventListener('click', () => {
-    try {
-      localStorage.removeItem(GPA_HISTORY_KEY);
-    } catch {
-      // Ignore storage failures.
-    }
-    renderHistory();
-    setMessage('History cleared.', 'success');
-  });
-}
-
 if (subjectContainer) {
   subjectContainer.addEventListener('input', () => {
     setMessage('', '');
   });
 }
 
-renderHistory();
+setResultState(true);
