@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://srmgradecalculator.vercel.app/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://srmgradecalculator.vercel.app/gpa.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://srmgradecalculator.vercel.app/cgpa.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://srmgradecalculator.vercel.app/about.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-01</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Use this free SRM CGPA calculator to calculate your cumulative GPA from semester GPAs and credits with instant results." />
+  <meta name="description" content="Use this free SRM CGPA calculator to calculate cumulative GPA from semester GPA or SGPA values and credits with instant results." />
   <meta name="keywords" content="SRM CGPA calculator, cumulative GPA calculator, SRM grade calculator, credit weighted CGPA" />
   <meta name="author" content="Om Kumar" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://srmgradecalculator.vercel.app/cgpa.html" />
-  <title>SRM CGPA Calculator | Free Credit-Weighted CGPA Tool</title>
-  <meta property="og:title" content="SRM CGPA Calculator" />
-  <meta property="og:description" content="Calculate SRM cumulative GPA instantly from semester GPAs and completed credits." />
+  <title>SRM CGPA Calculator | Calculate CGPA from Semester GPA / SGPA</title>
+  <meta property="og:title" content="SRM CGPA Calculator | Semester GPA to CGPA" />
+  <meta property="og:description" content="Calculate SRM CGPA instantly from semester GPA or SGPA values and completed credits." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/cgpa.html" />
   <meta property="og:site_name" content="SRM Grade Calculator" />
@@ -18,8 +18,8 @@
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta property="og:image:alt" content="SRM CGPA calculator preview" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SRM CGPA Calculator" />
-  <meta name="twitter:description" content="Free SRM CGPA calculator for quick cumulative GPA checks." />
+  <meta name="twitter:title" content="SRM CGPA Calculator | Semester GPA to CGPA" />
+  <meta name="twitter:description" content="Free SRM CGPA calculator for quick cumulative GPA checks using semester GPA or SGPA values." />
   <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta name="twitter:image:alt" content="SRM CGPA calculator preview" />
   <meta name="theme-color" content="#111317" />
@@ -59,7 +59,7 @@
       "operatingSystem": "Web",
       "isAccessibleForFree": true,
       "url": "https://srmgradecalculator.vercel.app/cgpa.html",
-      "description": "Calculate CGPA using semester GPA values and credits.",
+      "description": "Calculate SRM CGPA using semester GPA or SGPA values and credits.",
       "creator": {
         "@type": "Person",
         "name": "Om Kumar"
@@ -74,6 +74,31 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to calculate SRM CGPA from semester GPA values",
+      "description": "Step-by-step method to calculate cumulative GPA using semester GPA or SGPA values and completed credits.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Enter semester GPA",
+          "text": "Add one row for each completed semester and enter the GPA or SGPA value."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter total credits",
+          "text": "Fill in the total completed credits for that semester so the result is credit-weighted."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate CGPA",
+          "text": "Use the calculator to total weighted points and divide them by total completed credits."
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -81,7 +106,15 @@
           "name": "What should I enter in each row?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Enter one completed semester GPA and its total credits in each row."
+            "text": "Enter one completed semester GPA or SGPA and its total credits in each row."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate CGPA from semester SGPA values?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. GPA and SGPA are used the same way here for semester-wise entries, as long as you also enter the correct credits."
           }
         },
         {
@@ -147,8 +180,8 @@
 
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">CGPA calculator</span>
-        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">Track CGPA and project what comes next.</h1>
-        <p class="subtitle" style="margin-top:0; max-width:56ch;">Enter semester GPA and credits to get your current CGPA in one clean screen.</p>
+        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">SRM CGPA calculator from semester GPA and credits.</h1>
+        <p class="subtitle" style="margin-top:0; max-width:56ch;">Enter semester GPA or SGPA values and credits to get your current SRM CGPA in one clean screen with the correct credit-weighted formula.</p>
         <div class="trust-row" style="margin-bottom:0;">
           <span class="trust-chip">Semester-wise calculation</span>
           <span class="trust-chip">Semester breakdown</span>
@@ -198,7 +231,11 @@
         <div class="faq-stack">
           <div class="faq-item">
             <strong>What should I enter in each row?</strong>
-            <p>Enter one completed semester GPA and its total credits in each row.</p>
+            <p>Enter one completed semester GPA or SGPA and its total credits in each row.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I calculate CGPA from semester SGPA values?</strong>
+            <p>Yes. GPA and SGPA are used the same way here for semester-wise entries, as long as you also enter the correct credits.</p>
           </div>
           <div class="faq-item">
             <strong>Can I skip a semester row?</strong>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Use this free SRM GPA calculator to calculate SGPA from credits and grades, check the grade chart, and get instant semester results." />
+  <meta name="description" content="Use this free SRM GPA calculator to calculate semester GPA or SGPA from credits and grades. GPA and SGPA mean the same thing for one semester result." />
   <meta name="keywords" content="SRM GPA calculator, SRM SGPA calculator, semester GPA calculator, SRM grade calculator" />
   <meta name="author" content="Om Kumar" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://srmgradecalculator.vercel.app/gpa.html" />
-  <title>SRM GPA Calculator (SGPA) | Free Semester Grade Tool</title>
-  <meta property="og:title" content="SRM GPA Calculator (SGPA)" />
-  <meta property="og:description" content="Calculate SRM semester GPA instantly using credits and grades with a free student-friendly tool." />
+  <title>SRM GPA Calculator (SGPA Calculator) | Free Semester GPA Tool</title>
+  <meta property="og:title" content="SRM GPA Calculator (SGPA Calculator)" />
+  <meta property="og:description" content="Calculate SRM semester GPA or SGPA instantly using credits and grades with a free student-friendly tool." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/gpa.html" />
   <meta property="og:site_name" content="SRM Grade Calculator" />
@@ -18,8 +18,8 @@
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta property="og:image:alt" content="SRM GPA calculator preview" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SRM GPA Calculator" />
-  <meta name="twitter:description" content="Free SRM GPA calculator for semester SGPA checks using credits and grades." />
+  <meta name="twitter:title" content="SRM GPA Calculator (SGPA Calculator)" />
+  <meta name="twitter:description" content="Free SRM GPA calculator for semester GPA or SGPA checks using credits and grades." />
   <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta name="twitter:image:alt" content="SRM GPA calculator preview" />
   <meta name="theme-color" content="#111317" />
@@ -59,7 +59,7 @@
       "operatingSystem": "Web",
       "isAccessibleForFree": true,
       "url": "https://srmgradecalculator.vercel.app/gpa.html",
-      "description": "Calculate SGPA using SRM credits and grades.",
+      "description": "Calculate SRM semester GPA or SGPA using credits and grades.",
       "creator": {
         "@type": "Person",
         "name": "Om Kumar"
@@ -74,8 +74,41 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to calculate SRM GPA or SGPA",
+      "description": "Step-by-step method to calculate SRM semester GPA using subject credits and grades.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Add each subject",
+          "text": "Enter one row for every completed subject in the semester you want to calculate."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Enter credits and grades",
+          "text": "Fill in the credit value and choose the grade for each subject."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Calculate semester GPA",
+          "text": "Use the calculator to total weighted grade points and divide them by total credits."
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is GPA the same as SGPA in SRM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. On this page, GPA and SGPA both refer to the same semester grade point average."
+          }
+        },
         {
           "@type": "Question",
           "name": "Do F, Ab, W, I, and * affect GPA?",
@@ -147,8 +180,8 @@
 
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">GPA calculator</span>
-        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">Calculate SGPA in one clean pass.</h1>
-        <p class="subtitle" style="margin-top:0; max-width:60ch;">Add subjects, enter credits and grades, and get a readable semester result with a full breakdown.</p>
+        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">SRM GPA calculator for one semester (SGPA).</h1>
+        <p class="subtitle" style="margin-top:0; max-width:60ch;">At SRM, students often use GPA and SGPA interchangeably for the same semester result. Add subjects, enter credits and grades, and get a readable weighted result instantly.</p>
         <div class="trust-row" style="margin-bottom:0;">
           <span class="trust-chip">SRM grade chart built in</span>
           <span class="trust-chip">Partial rows are flagged</span>
@@ -230,8 +263,17 @@
       </details>
 
       <details class="accordion">
+        <summary>Is GPA the same as SGPA in SRM?</summary>
+        <p class="compact-note">Yes. On this calculator, GPA and SGPA both mean your semester grade point average. Students search using both terms, but the formula is the same.</p>
+      </details>
+
+      <details class="accordion">
         <summary>Common questions</summary>
         <div class="faq-stack">
+          <div class="faq-item">
+            <strong>Is GPA the same as SGPA in SRM?</strong>
+            <p>Yes. Students often use GPA and SGPA interchangeably for one semester result, and this calculator works for both.</p>
+          </div>
           <div class="faq-item">
             <strong>Do F, Ab, W, I, and * affect GPA?</strong>
             <p>Yes. They are treated as 0 grade points in the GPA calculation.</p>
