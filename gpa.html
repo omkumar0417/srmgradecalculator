@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SRM GPA Calculator | Calculate your SGPA easily with credits and grades using this smart tool by Om Kumar.">
+  <meta name="description" content="SRM GPA calculator with grade chart, backlog handling, shareable results, history, and subject-wise breakdown.">
   <meta name="keywords" content="SRM GPA Calculator, SGPA calculator, SRM Grade Tool, GPA Calculator SRM, Om Kumar, SRM University">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://srmgradecalculator.vercel.app/gpa.html">
   <title>GPA Calculator | SRM Grade Tool</title>
-  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="SRM GPA Calculator">
-  <meta property="og:description" content="Calculate your SGPA using credits and grades for SRM University.">
+  <meta property="og:description" content="Calculate SGPA using credits and grades with a clear SRM grade chart and shareable results.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/gpa.html">
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png">
@@ -17,7 +18,7 @@
 
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="gpa.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV9P7TSW8P"></script>
@@ -29,43 +30,155 @@
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7895007334839209" crossorigin="anonymous"></script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="site.js"></script>
 </head>
 <body>
   <div class="background-image"></div>
-  <div class="overlay">
-    <div class="card">
-      <h1 class="title">🎯 GPA Calculator</h1>
-      <p class="subtitle">Enter your subjects, credits, and grades to calculate your SGPA</p>
+  <div class="site-shell">
+    <header class="topbar">
+      <a href="index.html" class="brand">SRM Grade Calculator</a>
+      <button type="button" class="theme-toggle" data-theme-toggle>Switch to light</button>
+    </header>
 
-      <form id="gpa-form">
-        <div id="subject-container">
-          <div class="input-row">
-            <span class="serial">1.</span>
-            <input type="number" placeholder="Credits" class="credits" min="0" required />
-            <select class="grade">
-              <option value="10">O</option>
-              <option value="9">A+</option>
-              <option value="8">A</option>
-              <option value="7">B+</option>
-              <option value="6">B</option>
-              <option value="5">C</option>
-              <option value="0">F / Ab / W / I</option>
-            </select>
+    <main class="calculator-grid">
+      <section class="panel hero-panel">
+        <span class="eyebrow">GPA calculator</span>
+        <h1 class="title">Compute SGPA with a clean subject breakdown.</h1>
+        <p class="subtitle lede">Enter your subjects, credits, and grade points to calculate GPA. Empty rows are ignored, invalid entries are flagged, and the final summary can be copied or shared.</p>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <h3>Grade chart</h3>
+            <p>SRM grades are explained clearly inside the page, including backlog grades.</p>
+            <strong>Guided</strong>
+          </div>
+          <div class="stat-card">
+            <h3>History</h3>
+            <p>Each valid calculation is saved locally for quick reference later.</p>
+            <strong>Saved</strong>
+          </div>
+          <div class="stat-card">
+            <h3>Share</h3>
+            <p>Copy a summary or send it straight from your phone with one tap.</p>
+            <strong>Easy</strong>
           </div>
         </div>
-        <div class="buttons">
-          <button type="button" id="add-subject" class="btn gpa-btn">➕ Add Subject</button>
-          <button type="submit" class="btn cgpa-btn">Calculate GPA</button>
+        <p class="compact-note">Backlog handling: F, Ab, W, and I count as zero points in this calculator.</p>
+      </section>
+
+      <div class="section-stack">
+        <section class="panel content-panel">
+          <span class="pill">GPA input</span>
+          <form id="gpa-form" novalidate>
+            <div id="subject-container" class="input-stack">
+              <div class="input-row" data-row="1">
+                <span class="serial">1.</span>
+                <input type="number" placeholder="Credits" class="credits field" min="0" step="0.5" inputmode="decimal">
+                <select class="grade field">
+                  <option value="" selected>Grade</option>
+                  <option value="10">O</option>
+                  <option value="9">A+</option>
+                  <option value="8">A</option>
+                  <option value="7">B+</option>
+                  <option value="6">B</option>
+                  <option value="5">C</option>
+                  <option value="0">F / Ab / W / I</option>
+                </select>
+              </div>
+            </div>
+            <div class="buttons">
+              <button type="button" id="add-subject" class="btn gpa-btn">➕ Add Subject</button>
+              <button type="submit" class="btn cgpa-btn">Calculate GPA</button>
+            </div>
+          </form>
+          <p id="gpa-message" class="message" aria-live="polite"></p>
+        </section>
+
+        <aside class="panel content-panel result-panel sticky-mobile">
+          <div class="panel-head">
+            <h2 class="section-title">Result</h2>
+            <span class="pill" id="gpa-status">Ready</span>
+          </div>
+          <div id="result" class="result-value">No calculation yet.<small>Fill in the subjects above to see your GPA.</small></div>
+          <div class="metric-grid" id="gpa-metrics"></div>
+          <div class="action-row">
+            <button type="button" id="copy-result" class="btn ghost-btn">Copy result</button>
+            <button type="button" id="share-result" class="btn ghost-btn">Share result</button>
+          </div>
+          <h3 class="breakdown-title">Subject breakdown</h3>
+          <div class="table-wrap">
+            <table class="data-table" aria-label="GPA breakdown">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Credits</th>
+                  <th>Grade</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody id="gpa-breakdown"></tbody>
+            </table>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="section-stack">
+      <section class="panel content-panel">
+        <span class="pill">Grade chart</span>
+        <h2 class="section-title">SRM grade rules and backlog handling</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Grade</th>
+                <th>Points</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>O</td><td>10</td><td>Outstanding</td></tr>
+              <tr><td>A+</td><td>9</td><td>Excellent</td></tr>
+              <tr><td>A</td><td>8</td><td>Very good</td></tr>
+              <tr><td>B+</td><td>7</td><td>Good</td></tr>
+              <tr><td>B</td><td>6</td><td>Above average</td></tr>
+              <tr><td>C</td><td>5</td><td>Pass</td></tr>
+              <tr><td>F / Ab / W / I</td><td>0</td><td>Backlog or incomplete</td></tr>
+            </tbody>
+          </table>
         </div>
-      </form>
+        <p class="compact-note">If you leave a row empty, it will be ignored. If you enter a credit value, choose a grade for that row so the calculator can validate it correctly.</p>
+      </section>
 
-      <div id="result" class="subtitle" style="margin-top: 1rem;"></div>
-    </div>
-<div class="back-link">
-  <a href="index.html" class="btn back-btn">← Back to Home</a>
-</div>
+      <section class="panel content-panel">
+        <span class="pill">Semester history</span>
+        <h2 class="section-title">Recent GPA calculations</h2>
+        <ul id="gpa-history" class="history-list"></ul>
+        <div class="buttons">
+          <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
+        </div>
+      </section>
 
-    <footer>
+      <section class="panel content-panel">
+        <span class="pill">FAQ</span>
+        <h2 class="section-title">GPA calculator questions</h2>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>What do blank rows do?</h3>
+            <p>Blank rows are ignored. That makes it easy to add extra rows before you finish entering subjects.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can I use backlog grades?</h3>
+            <p>Yes. F, Ab, W, and I are treated as zero points so their effect is visible in the result.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can I share the GPA?</h3>
+            <p>Yes. Use the copy or share buttons to send a text summary of your calculation.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
       <p>&copy; 2025 Om Kumar • SRM University</p>
       <div class="footer-links">
         <a href="https://omkumarportfolio.vercel.app" target="_blank" rel="noopener noreferrer" class="about-link">🌐 Know About Me</a>
