@@ -143,82 +143,56 @@
       <button type="button" class="theme-toggle" data-theme-toggle>Switch to light</button>
     </header>
 
-    <main class="calculator-grid">
-      <section class="panel hero-panel hero-slim">
+    <main class="calculator-grid calculator-grid--tool">
+      <section class="panel content-panel calculator-intro">
         <span class="eyebrow">CGPA calculator</span>
-        <div class="hero-kicker">Track the bigger picture without losing the semester detail</div>
         <h1 class="title"><span class="title-accent">Calculate CGPA and plan ahead.</span></h1>
-        <div class="hero-copy">
-          <p class="subtitle lede">Enter semester GPAs, then project future results if you want. This layout is meant to help users move fast while still seeing what the final number is built from.</p>
-          <p class="hero-note">Rows can stay blank until you need them. Projection lives on the same page.</p>
-        </div>
-        <div class="mini-pills">
-          <span class="pill">Current</span>
-          <span class="pill">Projection</span>
-          <span class="pill">History</span>
-        </div>
-        <div class="trust-band">
-          <div class="trust-item">
-            <strong>Readable</strong>
-            <span>Shows weighted totals and semester breakdowns side by side.</span>
-          </div>
-          <div class="trust-item">
-            <strong>Practical</strong>
-            <span>Projection fields are already close to the current result for easy planning.</span>
-          </div>
-          <div class="trust-item">
-            <strong>Consistent</strong>
-            <span>The same visual system keeps the whole app easy to learn.</span>
-          </div>
-        </div>
+        <p class="subtitle lede">Enter semester GPAs and credits, then see your current CGPA or a projection in one place.</p>
       </section>
 
-      <div class="section-stack">
-        <section class="panel content-panel">
-          <span class="pill">Current CGPA</span>
-          <form id="cgpa-form" novalidate>
-            <div id="semester-container" class="input-stack">
-              <div class="semester-row" data-row="1">
-                <span class="serial">1.</span>
-                <input type="number" step="0.01" placeholder="GPA" class="gpa field" min="0" max="10" inputmode="decimal">
-                <input type="number" placeholder="Credits" class="credits field" min="0" step="0.5" inputmode="decimal">
-              </div>
+      <section class="panel content-panel calculator-input">
+        <form id="cgpa-form" novalidate>
+          <div id="semester-container" class="input-stack">
+            <div class="semester-row" data-row="1">
+              <span class="serial">1.</span>
+              <input type="number" step="0.01" placeholder="GPA" class="gpa field" min="0" max="10" inputmode="decimal">
+              <input type="number" placeholder="Credits" class="credits field" min="0" step="0.5" inputmode="decimal">
             </div>
-            <div class="buttons">
-              <button type="button" id="add-semester" class="btn gpa-btn">➕ Add</button>
-              <button type="submit" class="btn cgpa-btn">Calculate</button>
-            </div>
-          </form>
-          <p id="cgpa-message" class="message" aria-live="polite"></p>
-        </section>
+          </div>
+          <div class="buttons">
+            <button type="button" id="add-semester" class="btn gpa-btn">➕ Add</button>
+            <button type="submit" class="btn cgpa-btn">Calculate</button>
+          </div>
+        </form>
+        <p id="cgpa-message" class="message" aria-live="polite"></p>
+      </section>
 
-        <aside class="panel content-panel result-panel sticky-mobile">
-          <div class="panel-head">
-            <h2 class="section-title">Result</h2>
-            <span class="pill" id="cgpa-status">Ready</span>
-          </div>
-          <div id="cgpa-result" class="result-value">No calculation yet.<small>Add semester GPA and credits.</small></div>
-          <div class="metric-grid" id="cgpa-metrics"></div>
-          <div class="action-row">
-            <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy</button>
-            <button type="button" id="share-cgpa" class="btn ghost-btn">Share</button>
-          </div>
-          <h3 class="breakdown-title">Breakdown</h3>
-          <div class="table-wrap">
-            <table class="data-table" aria-label="CGPA breakdown">
-              <thead>
-                <tr>
-                  <th>Semester</th>
-                  <th>GPA</th>
-                  <th>Credits</th>
-                  <th>Weighted</th>
-                </tr>
-              </thead>
-              <tbody id="cgpa-breakdown"></tbody>
-            </table>
-          </div>
-        </aside>
-      </div>
+      <aside class="panel content-panel result-panel sticky-mobile">
+        <div class="panel-head">
+          <h2 class="section-title">Result</h2>
+          <span class="pill" id="cgpa-status">Ready</span>
+        </div>
+        <div id="cgpa-result" class="result-value">No calculation yet.<small>Add semester GPA and credits.</small></div>
+        <div class="metric-grid" id="cgpa-metrics"></div>
+        <div class="action-row">
+          <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy</button>
+          <button type="button" id="share-cgpa" class="btn ghost-btn">Share</button>
+        </div>
+        <h3 class="breakdown-title">Breakdown</h3>
+        <div class="table-wrap">
+          <table class="data-table" aria-label="CGPA breakdown">
+            <thead>
+              <tr>
+                <th>Semester</th>
+                <th>GPA</th>
+                <th>Credits</th>
+                <th>Weighted</th>
+              </tr>
+            </thead>
+            <tbody id="cgpa-breakdown"></tbody>
+          </table>
+        </div>
+      </aside>
     </main>
 
     <section class="panel content-panel compact-panel">
@@ -272,13 +246,6 @@
 
     <footer class="footer">
       <p>&copy; 2025 Om Kumar • SRM University</p>
-      <div class="footer-links">
-        <a href="https://omkumarportfolio.vercel.app" target="_blank" rel="noopener noreferrer" class="about-link">🌐 Know About Me</a>
-        <a href="https://www.linkedin.com/in/omkumar0417" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="linkedin-icon" />
-          Connect on LinkedIn
-        </a>
-      </div>
     </footer>
   </div>
   <script src="cgpa.js"></script>

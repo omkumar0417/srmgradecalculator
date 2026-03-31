@@ -143,91 +143,65 @@
       <button type="button" class="theme-toggle" data-theme-toggle>Switch to light</button>
     </header>
 
-    <main class="calculator-grid">
-      <section class="panel hero-panel hero-slim">
+    <main class="calculator-grid calculator-grid--tool">
+      <section class="panel content-panel calculator-intro">
         <span class="eyebrow">GPA calculator</span>
-        <div class="hero-kicker">Built for quick checks before class, exams, or results day</div>
         <h1 class="title"><span class="title-accent">Calculate your SGPA.</span></h1>
-        <div class="hero-copy">
-          <p class="subtitle lede">Add subject credits and grades, then get a readable semester result you can trust. The layout stays quick on mobile and clear on desktop.</p>
-          <p class="hero-note">Blank rows are ignored. Fill only what you need.</p>
-        </div>
-        <div class="mini-pills">
-          <span class="pill">Grade chart</span>
-          <span class="pill">History</span>
-          <span class="pill">Backlogs</span>
-        </div>
-        <div class="trust-band">
-          <div class="trust-item">
-            <strong>Accurate</strong>
-            <span>Weighted by credits so the number reflects the actual semester load.</span>
-          </div>
-          <div class="trust-item">
-            <strong>Helpful</strong>
-            <span>Highlights incomplete rows before they turn into bad results.</span>
-          </div>
-          <div class="trust-item">
-            <strong>Reusable</strong>
-            <span>History and copy actions make it easier to revisit results later.</span>
-          </div>
-        </div>
+        <p class="subtitle lede">Enter credits and grades, then get the semester result in one step.</p>
       </section>
 
-      <div class="section-stack">
-        <section class="panel content-panel">
-          <span class="pill">GPA input</span>
-          <form id="gpa-form" novalidate>
-            <div id="subject-container" class="input-stack">
-              <div class="input-row" data-row="1">
-                <span class="serial">1.</span>
-                <input type="number" placeholder="Credits" class="credits field" min="0" step="0.5" inputmode="decimal">
-                <select class="grade field">
-                  <option value="" selected>Grade</option>
-                  <option value="10">O</option>
-                  <option value="9">A+</option>
-                  <option value="8">A</option>
-                  <option value="7">B+</option>
-                  <option value="6">B</option>
-                  <option value="5.5">C</option>
-                  <option value="0">F / Ab / W / I</option>
-                </select>
-              </div>
+      <section class="panel content-panel calculator-input">
+        <form id="gpa-form" novalidate>
+          <div id="subject-container" class="input-stack">
+            <div class="input-row" data-row="1">
+              <span class="serial">1.</span>
+              <input type="number" placeholder="Credits" class="credits field" min="0" step="0.5" inputmode="decimal">
+              <select class="grade field">
+                <option value="" selected>Grade</option>
+                <option value="10">O</option>
+                <option value="9">A+</option>
+                <option value="8">A</option>
+                <option value="7">B+</option>
+                <option value="6">B</option>
+                <option value="5.5">C</option>
+                <option value="0">F / Ab / W / I</option>
+              </select>
             </div>
-            <div class="buttons">
-              <button type="button" id="add-subject" class="btn gpa-btn">➕ Add</button>
-              <button type="submit" class="btn cgpa-btn">Calculate</button>
-            </div>
-          </form>
-          <p id="gpa-message" class="message" aria-live="polite"></p>
-        </section>
+          </div>
+          <div class="buttons">
+            <button type="button" id="add-subject" class="btn gpa-btn">➕ Add</button>
+            <button type="submit" class="btn cgpa-btn">Calculate</button>
+          </div>
+        </form>
+        <p id="gpa-message" class="message" aria-live="polite"></p>
+      </section>
 
-        <aside class="panel content-panel result-panel sticky-mobile">
-          <div class="panel-head">
-            <h2 class="section-title">Result</h2>
-            <span class="pill" id="gpa-status">Ready</span>
-          </div>
-          <div id="result" class="result-value">No calculation yet.<small>Fill in the form to see your GPA.</small></div>
-          <div class="metric-grid" id="gpa-metrics"></div>
-          <div class="action-row">
-            <button type="button" id="copy-result" class="btn ghost-btn">Copy</button>
-            <button type="button" id="share-result" class="btn ghost-btn">Share</button>
-          </div>
-          <h3 class="breakdown-title">Breakdown</h3>
-          <div class="table-wrap">
-            <table class="data-table" aria-label="GPA breakdown">
-              <thead>
-                <tr>
-                  <th>Subject</th>
-                  <th>Credits</th>
-                  <th>Grade</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody id="gpa-breakdown"></tbody>
-            </table>
-          </div>
-        </aside>
-      </div>
+      <aside class="panel content-panel result-panel sticky-mobile">
+        <div class="panel-head">
+          <h2 class="section-title">Result</h2>
+          <span class="pill" id="gpa-status">Ready</span>
+        </div>
+        <div id="result" class="result-value">No calculation yet.<small>Fill in the form to see your GPA.</small></div>
+        <div class="metric-grid" id="gpa-metrics"></div>
+        <div class="action-row">
+          <button type="button" id="copy-result" class="btn ghost-btn">Copy</button>
+          <button type="button" id="share-result" class="btn ghost-btn">Share</button>
+        </div>
+        <h3 class="breakdown-title">Breakdown</h3>
+        <div class="table-wrap">
+          <table class="data-table" aria-label="GPA breakdown">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Credits</th>
+                <th>Grade</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody id="gpa-breakdown"></tbody>
+          </table>
+        </div>
+      </aside>
     </main>
 
     <section class="panel content-panel compact-panel">
@@ -270,13 +244,6 @@
 
     <footer class="footer">
       <p>&copy; 2025 Om Kumar • SRM University</p>
-      <div class="footer-links">
-        <a href="https://omkumarportfolio.vercel.app" target="_blank" rel="noopener noreferrer" class="about-link">🌐 Know About Me</a>
-        <a href="https://www.linkedin.com/in/omkumar0417" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="linkedin-icon" />
-          Connect on LinkedIn
-        </a>
-      </div>
     </footer>
   </div>
   <script src="gpa.js"></script>
