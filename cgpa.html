@@ -2,27 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SRM CGPA calculator with projection tools, history, and shareable results.">
-  <meta name="author" content="Om Kumar">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://srmgradecalculator.vercel.app/cgpa.html">
-  <title>SRM CGPA Calculator | GPA & CGPA Tool by Om Kumar</title>
-  <meta property="og:title" content="SRM CGPA Calculator">
-  <meta property="og:description" content="Calculate CGPA and project future semesters.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://srmgradecalculator.vercel.app/cgpa.html">
-  <meta property="og:site_name" content="SRM Grade Calculator">
-  <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png">
-  <meta property="og:image:alt" content="SRM GPA & CGPA Calculator Screenshot">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SRM CGPA Calculator">
-  <meta name="twitter:description" content="Calculate CGPA and project future semesters.">
-  <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png">
-  <meta name="theme-color" content="#111317">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Use this free SRM CGPA calculator to calculate your cumulative GPA from semester GPAs and credits with instant results." />
+  <meta name="keywords" content="SRM CGPA calculator, cumulative GPA calculator, SRM grade calculator, credit weighted CGPA" />
+  <meta name="author" content="Om Kumar" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://srmgradecalculator.vercel.app/cgpa.html" />
+  <title>SRM CGPA Calculator | Free Credit-Weighted CGPA Tool</title>
+  <meta property="og:title" content="SRM CGPA Calculator" />
+  <meta property="og:description" content="Calculate SRM cumulative GPA instantly from semester GPAs and completed credits." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://srmgradecalculator.vercel.app/cgpa.html" />
+  <meta property="og:site_name" content="SRM Grade Calculator" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png" />
+  <meta property="og:image:alt" content="SRM CGPA calculator preview" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SRM CGPA Calculator" />
+  <meta name="twitter:description" content="Free SRM CGPA calculator for quick cumulative GPA checks." />
+  <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png" />
+  <meta name="twitter:image:alt" content="SRM CGPA calculator preview" />
+  <meta name="theme-color" content="#111317" />
 
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,11 +35,68 @@
       "operatingSystem": "Web",
       "isAccessibleForFree": true,
       "url": "https://srmgradecalculator.vercel.app/cgpa.html",
-      "description": "Calculate CGPA and project future semesters.",
+      "description": "Calculate CGPA using semester GPA values and credits.",
       "creator": {
         "@type": "Person",
         "name": "Om Kumar"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
       }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What should I enter in each row?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter one completed semester GPA and its total credits in each row."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I skip a semester row?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Blank rows are ignored, but partially filled rows are flagged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is CGPA calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CGPA is the total weighted GPA points divided by the total completed credits."
+          }
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://srmgradecalculator.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "CGPA Calculator",
+          "item": "https://srmgradecalculator.vercel.app/cgpa.html"
+        }
+      ]
     }
   </script>
 
@@ -54,7 +114,18 @@
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a href="index.html" class="brand">SRM Grade Calculator</a>
+      <div class="brand-lockup">
+        <a href="index.html" class="brand">SRM Grade Calculator</a>
+        <span class="brand-subtitle">Fast GPA and CGPA tools for SRM students</span>
+      </div>
+      <nav class="topbar-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="gpa.html" class="nav-link">GPA</a></li>
+          <li><a href="cgpa.html" class="nav-link" aria-current="page">CGPA</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main class="calculator-grid calculator-grid--tool calculator-grid--cgpa">
