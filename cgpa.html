@@ -17,9 +17,106 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="cgpa.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
+  <style>
+    .hero-note {
+      margin-top: 0.85rem;
+      color: rgba(245, 247, 255, 0.76);
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 1.4rem;
+    }
+
+    #semester-container {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .semester-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .serial {
+      font-size: 0.95rem;
+      color: rgba(245, 247, 255, 0.72);
+      width: 1.4rem;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    input.gpa,
+    input.credits {
+      width: 100%;
+      min-width: 0;
+      padding: 0.82rem 0.95rem;
+      font-size: 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      outline: none;
+      background: rgba(8, 12, 24, 0.84);
+      color: #f8fbff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    input.gpa::placeholder,
+    input.credits::placeholder {
+      color: rgba(248, 251, 255, 0.42);
+    }
+
+    #cgpa-result {
+      margin-top: 0.3rem;
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      background: rgba(125, 211, 252, 0.09);
+      border: 1px solid rgba(125, 211, 252, 0.16);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      min-height: 3.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .semester-row {
+        grid-template-columns: auto minmax(0, 1fr);
+      }
+
+      .semester-row input.credits {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .semester-row {
+        padding: 0.7rem;
+      }
+
+      .serial {
+        width: auto;
+        font-size: 0.9rem;
+      }
+
+      input.gpa,
+      input.credits {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV9P7TSW8P"></script>
   <script>
@@ -43,12 +140,30 @@
     <main class="calculator-grid">
       <section class="panel hero-panel hero-slim">
         <span class="eyebrow">CGPA calculator</span>
-        <h1 class="title">Calculate CGPA and plan ahead.</h1>
-        <p class="subtitle lede">Enter semester GPAs, then project future results if you want.</p>
+        <div class="hero-kicker">Track the bigger picture without losing the semester detail</div>
+        <h1 class="title"><span class="title-accent">Calculate CGPA and plan ahead.</span></h1>
+        <div class="hero-copy">
+          <p class="subtitle lede">Enter semester GPAs, then project future results if you want. This layout is meant to help users move fast while still seeing what the final number is built from.</p>
+          <p class="hero-note">Rows can stay blank until you need them. Projection lives on the same page.</p>
+        </div>
         <div class="mini-pills">
           <span class="pill">Current</span>
           <span class="pill">Projection</span>
           <span class="pill">History</span>
+        </div>
+        <div class="trust-band">
+          <div class="trust-item">
+            <strong>Readable</strong>
+            <span>Shows weighted totals and semester breakdowns side by side.</span>
+          </div>
+          <div class="trust-item">
+            <strong>Practical</strong>
+            <span>Projection fields are already close to the current result for easy planning.</span>
+          </div>
+          <div class="trust-item">
+            <strong>Consistent</strong>
+            <span>The same visual system keeps the whole app easy to learn.</span>
+          </div>
         </div>
       </section>
 
