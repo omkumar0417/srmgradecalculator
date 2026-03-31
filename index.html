@@ -71,7 +71,10 @@
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <a href="index.html" class="brand">SRM Grade Calculator</a>
+      <div class="brand-lockup">
+        <a href="index.html" class="brand">SRM Grade Calculator</a>
+        <span class="brand-subtitle">Fast GPA and CGPA tools for SRM students</span>
+      </div>
     </header>
 
     <main class="landing-grid">
@@ -93,74 +96,45 @@
             <a href="gpa.html" class="btn gpa-btn">GPA Calculator →</a>
             <a href="cgpa.html" class="btn cgpa-btn">CGPA Calculator →</a>
           </div>
-          <div class="hero-points">
-            <article class="hero-point-card">
-              <span>Fast start</span>
-              <strong>Open the calculator and begin right away.</strong>
-            </article>
-            <article class="hero-point-card">
-              <span>Clear output</span>
-              <strong>See the answer first, then verify it with the breakdown.</strong>
-            </article>
-          </div>
         </div>
       </section>
 
       <aside class="panel visual-panel">
-        <div class="mini-visual">
-          <div class="preview-workspace">
-            <div class="preview-topbar">
-              <span class="mini-chip">Tool preview</span>
-              <span class="pill">2 calculators</span>
-            </div>
-            <div class="preview-tabs">
-              <span class="preview-tab preview-tab-active">GPA</span>
-              <span class="preview-tab">CGPA</span>
-              <span class="preview-tab">Projection</span>
-            </div>
-            <div class="preview-grid">
-              <div class="preview-panel">
-                <span class="preview-label">Input</span>
-                <div class="preview-row">
-                  <span class="preview-index">1</span>
-                  <span class="preview-field">Credits</span>
-                  <span class="preview-field preview-field-short">Grade</span>
-                </div>
-                <div class="preview-row">
-                  <span class="preview-index">2</span>
-                  <span class="preview-field">Credits</span>
-                  <span class="preview-field preview-field-short">Grade</span>
-                </div>
-                <div class="preview-actions">
-                  <span class="preview-button preview-button-muted">Add</span>
-                  <span class="preview-button">Calculate</span>
-                </div>
-              </div>
-              <div class="preview-panel preview-panel-result">
-                <span class="preview-label">Result</span>
-                <strong class="preview-result">8.76</strong>
-                <p class="preview-copy">Weighted result, clean breakdown, and quick copy or share.</p>
-                <div class="preview-summary">
-                  <div>
-                    <span>Credits</span>
-                    <strong>21</strong>
-                  </div>
-                  <div>
-                    <span>Rows</span>
-                    <strong>6</strong>
-                  </div>
-                  <div>
-                    <span>Status</span>
-                    <strong>Ready</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="preview-footer">
-              <span>Answer first</span>
-              <span>Breakdown next</span>
-              <span>History saved</span>
-            </div>
+        <div class="mini-visual utility-panel">
+          <div class="utility-head">
+            <span class="mini-chip">Why this tool</span>
+            <span class="pill">2 calculators</span>
+          </div>
+          <div class="utility-score">
+            <span class="utility-label">Built for quick checks</span>
+            <strong>GPA now, CGPA next.</strong>
+            <p>Use the calculator you need, get the number fast, and verify it without extra clutter.</p>
+          </div>
+          <div class="utility-grid">
+            <article class="utility-card">
+              <span>GPA</span>
+              <strong>Semester result in one pass</strong>
+              <p>Add credits and grades, then get the weighted answer instantly.</p>
+            </article>
+            <article class="utility-card">
+              <span>CGPA</span>
+              <strong>Credit-weighted cumulative view</strong>
+              <p>Enter semester GPA and credits to see the number that actually matters overall.</p>
+            </article>
+            <article class="utility-card">
+              <span>Clarity</span>
+              <strong>Rows stay readable</strong>
+              <p>Blank rows are ignored and partial rows are flagged before calculation.</p>
+            </article>
+            <article class="utility-card">
+              <span>Trust</span>
+              <strong>SRM-oriented grading flow</strong>
+              <p>Use the built-in grade chart and simple validation instead of calculating by hand.</p>
+            </article>
+          </div>
+          <div class="utility-links">
+            <a href="gpa.html" class="utility-link">Open GPA calculator</a>
+            <a href="cgpa.html" class="utility-link">Open CGPA calculator</a>
           </div>
         </div>
       </aside>
@@ -168,6 +142,11 @@
 
     <footer class="footer footer-home">
       <p>&copy; 2025 Om Kumar · SRM University</p>
+      <div class="footer-links" aria-label="Creator links">
+        <span class="footer-meta">Built by Om Kumar</span>
+        <a href="https://omkumarportfolio.vercel.app" target="_blank" rel="noopener noreferrer" class="footer-link">Portfolio</a>
+        <a href="https://www.linkedin.com/in/omkumar0417/" target="_blank" rel="noopener noreferrer" class="footer-link">Connect on LinkedIn</a>
+      </div>
     </footer>
   </div>
 </body>
