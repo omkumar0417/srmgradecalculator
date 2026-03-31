@@ -17,112 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
-  <style>
-    .hero-note {
-      margin-top: 0.85rem;
-      color: rgba(245, 247, 255, 0.76);
-      font-size: 0.95rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      margin-top: 1.4rem;
-    }
-
-    .input-row {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) 100px;
-      align-items: center;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.85rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .serial {
-      font-size: 0.95rem;
-      color: rgba(245, 247, 255, 0.72);
-      width: 1.4rem;
-      text-align: right;
-      font-weight: 700;
-    }
-
-    input.credits,
-    select.grade {
-      width: 100%;
-      min-width: 0;
-      padding: 0.82rem 0.95rem;
-      font-size: 1rem;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      outline: none;
-      background: rgba(8, 12, 24, 0.84);
-      color: #f8fbff;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    input.credits::placeholder {
-      color: rgba(248, 251, 255, 0.42);
-    }
-
-    select.grade {
-      text-align-last: center;
-      -moz-text-align-last: center;
-      appearance: none;
-    }
-
-    #result {
-      margin-top: 0.3rem;
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
-      background: rgba(125, 211, 252, 0.09);
-      border: 1px solid rgba(125, 211, 252, 0.16);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      min-height: 3.25rem;
-    }
-
-    @media (max-width: 900px) {
-      .input-row {
-        grid-template-columns: auto minmax(0, 1fr);
-      }
-
-      .input-row .credits {
-        grid-column: 2;
-      }
-
-      .input-row .grade {
-        grid-column: 2;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .input-row {
-        padding: 0.75rem;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .serial {
-        width: auto;
-        font-size: 0.9rem;
-      }
-
-      input.credits,
-      select.grade {
-        padding: 0.75rem 0.85rem;
-        font-size: 0.95rem;
-      }
-    }
-  </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV9P7TSW8P"></script>
   <script>
@@ -136,7 +31,6 @@
   <script defer src="site.js"></script>
 </head>
 <body>
-  <div class="background-image"></div>
   <div class="site-shell">
     <header class="topbar">
       <a href="index.html" class="brand">SRM Grade Calculator</a>
@@ -144,13 +38,20 @@
     </header>
 
     <main class="calculator-grid calculator-grid--tool">
+
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">GPA calculator</span>
-        <h1 class="title"><span class="title-accent">Calculate SGPA in one clean pass.</span></h1>
-        <p class="subtitle lede">Add subjects, enter credits and grades, and get a readable semester result with breakdown and history.</p>
+        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">Calculate SGPA in one clean pass.</h1>
+        <p class="subtitle" style="margin-top:0; max-width:60ch;">Add subjects, enter credits and grades, and get a readable semester result with a full breakdown.</p>
+        <div class="trust-row" style="margin-bottom:0;">
+          <span class="trust-chip">SRM grade chart built in</span>
+          <span class="trust-chip">Partial rows are flagged</span>
+          <span class="trust-chip">Works on phone</span>
+        </div>
       </section>
 
       <section class="panel content-panel calculator-input">
+        <p class="tool-note">Enter only completed subjects for the semester you want to calculate.</p>
         <form id="gpa-form" novalidate>
           <div id="subject-container" class="input-stack">
             <div class="input-row" data-row="1">
@@ -169,25 +70,27 @@
             </div>
           </div>
           <div class="buttons">
-            <button type="button" id="add-subject" class="btn gpa-btn">➕ Add</button>
-            <button type="submit" class="btn cgpa-btn">Calculate</button>
+            <button type="button" id="add-subject" class="btn ghost-btn">+ Add subject</button>
+            <button type="submit" class="btn gpa-btn">Calculate GPA</button>
           </div>
         </form>
         <p id="gpa-message" class="message" aria-live="polite"></p>
       </section>
 
-      <aside class="panel content-panel result-panel sticky-mobile">
+      <aside class="panel content-panel result-panel result-spotlight sticky-mobile">
         <div class="panel-head">
           <h2 class="section-title">Result</h2>
           <span class="pill" id="gpa-status">Ready</span>
         </div>
-        <div id="result" class="result-value">No calculation yet.<small>Fill in the form to see your GPA.</small></div>
+        <div id="result" class="result-value">
+          —<small>Fill in subjects to see your GPA.</small>
+        </div>
         <div class="metric-grid" id="gpa-metrics"></div>
         <div class="action-row">
           <button type="button" id="copy-result" class="btn ghost-btn">Copy</button>
           <button type="button" id="share-result" class="btn ghost-btn">Share</button>
         </div>
-        <h3 class="breakdown-title">Breakdown</h3>
+        <p class="breakdown-title">Breakdown</p>
         <div class="table-wrap">
           <table class="data-table" aria-label="GPA breakdown">
             <thead>
@@ -198,22 +101,21 @@
                 <th>Points</th>
               </tr>
             </thead>
-            <tbody id="gpa-breakdown"></tbody>
+            <tbody id="gpa-breakdown">
+              <tr><td class="empty-state" colspan="4">No data yet.</td></tr>
+            </tbody>
           </table>
         </div>
       </aside>
     </main>
 
-    <section class="panel content-panel compact-panel">
+    <section class="panel compact-panel">
       <details class="accordion" open>
         <summary>Grade chart</summary>
-        <div class="table-wrap">
+        <div class="table-wrap" style="margin:0 1.5rem 0">
           <table class="data-table">
             <thead>
-              <tr>
-                <th>Grade</th>
-                <th>Points</th>
-              </tr>
+              <tr><th>Grade</th><th>Points</th></tr>
             </thead>
             <tbody>
               <tr><td>O</td><td>10</td></tr>
@@ -226,24 +128,25 @@
             </tbody>
           </table>
         </div>
+        <div style="height:1.2rem"></div>
       </details>
 
       <details class="accordion">
         <summary>History</summary>
         <ul id="gpa-history" class="history-list"></ul>
-        <div class="buttons">
+        <div class="buttons" style="padding-top:0.6rem">
           <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
         </div>
       </details>
 
       <details class="accordion">
         <summary>How it works</summary>
-        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. F, Ab, W, and I count as 0 points.</p>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. F, Ab, W, and I count as 0 points. GPA = total weighted points ÷ total credits.</p>
       </details>
     </section>
 
     <footer class="footer">
-      <p>&copy; 2025 Om Kumar • SRM University</p>
+      <p>&copy; 2025 Om Kumar · SRM University</p>
     </footer>
   </div>
   <script src="gpa.js"></script>

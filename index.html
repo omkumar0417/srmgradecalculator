@@ -17,7 +17,6 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV9P7TSW8P"></script>
@@ -32,50 +31,58 @@
   <script defer src="site.js"></script>
 </head>
 <body>
-  <div class="background-image"></div>
   <div class="site-shell">
     <header class="topbar">
       <a href="index.html" class="brand">SRM Grade Calculator</a>
       <button type="button" class="theme-toggle" data-theme-toggle>Switch to light</button>
     </header>
 
-    <main class="landing-grid landing-clean">
-      <section class="panel hero-panel hero-slim">
+    <main class="landing-grid">
+      <section class="panel hero-panel">
         <span class="eyebrow">SRM tools</span>
-        <h1 class="title"><span class="title-accent">SRM GPA and CGPA, without the clutter.</span></h1>
+        <h1 class="title">
+          Grade tracking,<br>
+          <span class="title-accent">without the mess.</span>
+        </h1>
         <div class="hero-copy">
-          <p class="subtitle lede">Built for fast checks, clean breakdowns, and a result screen that feels dependable on mobile and laptop.</p>
-          <div class="hero-actions">
-            <a href="gpa.html" class="btn gpa-btn">GPA Calculator</a>
-            <a href="cgpa.html" class="btn cgpa-btn">CGPA Calculator</a>
+          <p class="subtitle lede">Fast GPA and CGPA calculation built for SRM students. Answer first, breakdown after, nothing in the way.</p>
+          <div class="trust-row">
+            <span class="trust-chip">SRM grade mapping</span>
+            <span class="trust-chip">No login</span>
+            <span class="trust-chip">Mobile friendly</span>
+            <span class="trust-chip">History saved locally</span>
           </div>
-          <div class="scoreboard-grid hero-points">
+          <div class="hero-actions">
+            <a href="gpa.html" class="btn gpa-btn">GPA Calculator →</a>
+            <a href="cgpa.html" class="btn cgpa-btn">CGPA Calculator →</a>
+          </div>
+          <div class="scoreboard-grid hero-points" style="margin-top:1.4rem">
             <div>
-              <span>Fast</span>
-              <strong>One-screen flow</strong>
+              <span>Input</span>
+              <strong>Enter & calculate</strong>
             </div>
             <div>
-              <span>Clear</span>
-              <strong>Breakdowns included</strong>
+              <span>Result</span>
+              <strong>Answer + breakdown</strong>
             </div>
             <div>
-              <span>Usable</span>
-              <strong>Desktop to phone</strong>
+              <span>Share</span>
+              <strong>Copy or export</strong>
             </div>
           </div>
         </div>
       </section>
 
-      <aside class="panel content-panel visual-panel">
+      <aside class="panel visual-panel">
         <div class="mini-visual">
           <div class="scoreboard">
             <div class="scoreboard-top">
-              <span class="mini-chip">Live-style preview</span>
+              <span class="mini-chip">Live preview</span>
               <span class="pill">No sign in</span>
             </div>
             <strong class="scoreboard-value">9.24</strong>
             <span class="scoreboard-label">Projected CGPA</span>
-            <p class="scoreboard-copy">A focused result card with the answer first, then the details that help you trust it.</p>
+            <p class="scoreboard-copy">The answer you need, with the detail that helps you trust it.</p>
             <div class="scoreboard-grid">
               <div>
                 <span>Output</span>
@@ -96,7 +103,7 @@
     </main>
 
     <footer class="footer footer-home">
-      <p>&copy; 2025 Om Kumar • SRM University</p>
+      <p>&copy; 2025 Om Kumar · SRM University</p>
     </footer>
   </div>
 </body>

@@ -17,112 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><text y=%2218%22 font-size=%2218%22>📚</text></svg>">
-  <style>
-    .hero-note {
-      margin-top: 0.85rem;
-      color: rgba(245, 247, 255, 0.76);
-      font-size: 0.95rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      margin-top: 1.4rem;
-    }
-
-    #semester-container {
-      display: grid;
-      gap: 0.85rem;
-    }
-
-    .semester-row {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
-      align-items: center;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.85rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .serial {
-      font-size: 0.95rem;
-      color: rgba(245, 247, 255, 0.72);
-      width: 1.4rem;
-      text-align: right;
-      font-weight: 700;
-    }
-
-    input.gpa,
-    input.credits {
-      width: 100%;
-      min-width: 0;
-      padding: 0.82rem 0.95rem;
-      font-size: 1rem;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      outline: none;
-      background: rgba(8, 12, 24, 0.84);
-      color: #f8fbff;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    input.gpa::placeholder,
-    input.credits::placeholder {
-      color: rgba(248, 251, 255, 0.42);
-    }
-
-    #cgpa-result {
-      margin-top: 0.3rem;
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
-      background: rgba(125, 211, 252, 0.09);
-      border: 1px solid rgba(125, 211, 252, 0.16);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      min-height: 3.25rem;
-    }
-
-    @media (max-width: 900px) {
-      .semester-row {
-        grid-template-columns: auto minmax(0, 1fr);
-      }
-
-      .semester-row .gpa {
-        grid-column: 2;
-      }
-
-      .semester-row .credits {
-        grid-column: 2;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .semester-row {
-        padding: 0.75rem;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .serial {
-        width: auto;
-        font-size: 0.9rem;
-      }
-
-      input.gpa,
-      input.credits {
-        padding: 0.75rem 0.85rem;
-        font-size: 0.95rem;
-      }
-    }
-  </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV9P7TSW8P"></script>
   <script>
@@ -136,7 +31,6 @@
   <script defer src="site.js"></script>
 </head>
 <body>
-  <div class="background-image"></div>
   <div class="site-shell">
     <header class="topbar">
       <a href="index.html" class="brand">SRM Grade Calculator</a>
@@ -144,13 +38,20 @@
     </header>
 
     <main class="calculator-grid calculator-grid--tool">
+
       <section class="panel content-panel calculator-intro">
         <span class="eyebrow">CGPA calculator</span>
-        <h1 class="title"><span class="title-accent">Track CGPA and project what comes next.</span></h1>
-        <p class="subtitle lede">Enter semester GPA and credits, then use the same screen to see your current CGPA and future projection.</p>
+        <h1 class="title" style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:0.6rem;">Track CGPA and project what comes next.</h1>
+        <p class="subtitle" style="margin-top:0; max-width:60ch;">Enter semester GPA and credits, see your current CGPA and a projection for future semesters — all in one screen.</p>
+        <div class="trust-row" style="margin-bottom:0;">
+          <span class="trust-chip">Current + projected CGPA</span>
+          <span class="trust-chip">Semester breakdown</span>
+          <span class="trust-chip">No sign in needed</span>
+        </div>
       </section>
 
       <section class="panel content-panel calculator-input">
+        <p class="tool-note">One row per completed semester. Leave a row blank to skip it.</p>
         <form id="cgpa-form" novalidate>
           <div id="semester-container" class="input-stack">
             <div class="semester-row" data-row="1">
@@ -160,25 +61,27 @@
             </div>
           </div>
           <div class="buttons">
-            <button type="button" id="add-semester" class="btn gpa-btn">➕ Add</button>
-            <button type="submit" class="btn cgpa-btn">Calculate</button>
+            <button type="button" id="add-semester" class="btn ghost-btn">+ Add semester</button>
+            <button type="submit" class="btn gpa-btn">Calculate CGPA</button>
           </div>
         </form>
         <p id="cgpa-message" class="message" aria-live="polite"></p>
       </section>
 
-      <aside class="panel content-panel result-panel sticky-mobile">
+      <aside class="panel content-panel result-panel result-spotlight sticky-mobile">
         <div class="panel-head">
           <h2 class="section-title">Result</h2>
           <span class="pill" id="cgpa-status">Ready</span>
         </div>
-        <div id="cgpa-result" class="result-value">No calculation yet.<small>Add semester GPA and credits.</small></div>
+        <div id="cgpa-result" class="result-value">
+          —<small>Add semester GPA and credits.</small>
+        </div>
         <div class="metric-grid" id="cgpa-metrics"></div>
         <div class="action-row">
           <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy</button>
           <button type="button" id="share-cgpa" class="btn ghost-btn">Share</button>
         </div>
-        <h3 class="breakdown-title">Breakdown</h3>
+        <p class="breakdown-title">Breakdown</p>
         <div class="table-wrap">
           <table class="data-table" aria-label="CGPA breakdown">
             <thead>
@@ -189,63 +92,69 @@
                 <th>Weighted</th>
               </tr>
             </thead>
-            <tbody id="cgpa-breakdown"></tbody>
+            <tbody id="cgpa-breakdown">
+              <tr><td class="empty-state" colspan="4">No data yet.</td></tr>
+            </tbody>
           </table>
         </div>
       </aside>
     </main>
 
-    <section class="panel content-panel compact-panel">
+    <section class="panel compact-panel">
       <details class="accordion" open>
         <summary>Projected CGPA</summary>
-        <form id="projection-form" novalidate>
-          <div class="metric-grid">
-            <label class="metric-card">
-              <span>Current CGPA</span>
-              <input id="projection-current-cgpa" type="number" step="0.01" min="0" max="10" class="field" placeholder="Use current result">
-            </label>
-            <label class="metric-card">
-              <span>Completed credits</span>
-              <input id="projection-current-credits" type="number" step="0.5" min="0" class="field" placeholder="Use current result">
-            </label>
-          </div>
-          <div id="projection-container" class="input-stack" style="margin-top: 14px;">
-            <div class="semester-row" data-row="1">
-              <span class="serial">1.</span>
-              <input type="number" step="0.01" placeholder="Expected GPA" class="forecast-gpa field" min="0" max="10" inputmode="decimal">
-              <input type="number" placeholder="Credits" class="forecast-credits field" min="0" step="0.5" inputmode="decimal">
+        <div style="padding: 0 1.5rem 0.8rem;">
+          <form id="projection-form" novalidate>
+            <div class="metric-grid" style="grid-template-columns:1fr 1fr; margin-top:0;">
+              <label class="metric-card">
+                <span>Current CGPA</span>
+                <input id="projection-current-cgpa" type="number" step="0.01" min="0" max="10" class="field" placeholder="Auto-filled" style="margin-top:0.35rem;">
+              </label>
+              <label class="metric-card">
+                <span>Completed credits</span>
+                <input id="projection-current-credits" type="number" step="0.5" min="0" class="field" placeholder="Auto-filled" style="margin-top:0.35rem;">
+              </label>
             </div>
+            <div id="projection-container" class="input-stack">
+              <div class="semester-row" data-row="1">
+                <span class="serial">1.</span>
+                <input type="number" step="0.01" placeholder="Expected GPA" class="forecast-gpa field" min="0" max="10" inputmode="decimal">
+                <input type="number" placeholder="Credits" class="forecast-credits field" min="0" step="0.5" inputmode="decimal">
+              </div>
+            </div>
+            <div class="buttons">
+              <button type="button" id="add-forecast-semester" class="btn ghost-btn">+ Add semester</button>
+              <button type="submit" class="btn cgpa-btn">Calculate projection</button>
+            </div>
+          </form>
+          <p id="projection-message" class="message" aria-live="polite"></p>
+          <div id="projection-result" class="result-value" style="margin-top:0.9rem; font-size:clamp(2rem,4vw,2.8rem);">
+            —<small>Enter current CGPA and future semesters.</small>
           </div>
-          <div class="buttons">
-            <button type="button" id="add-forecast-semester" class="btn gpa-btn">➕ Add</button>
-            <button type="submit" class="btn cgpa-btn">Calculate</button>
+          <div class="metric-grid" id="projection-metrics" style="grid-template-columns:repeat(3,1fr);margin-top:0.8rem;"></div>
+          <div class="action-row">
+            <button type="button" id="copy-projection" class="btn ghost-btn">Copy</button>
+            <button type="button" id="share-projection" class="btn ghost-btn">Share</button>
           </div>
-        </form>
-        <p id="projection-message" class="message" aria-live="polite"></p>
-        <div id="projection-result" class="result-value" style="margin-top: 12px;">No projection yet.<small>Enter current CGPA and future semesters.</small></div>
-        <div class="metric-grid" id="projection-metrics"></div>
-        <div class="action-row">
-          <button type="button" id="copy-projection" class="btn ghost-btn">Copy</button>
-          <button type="button" id="share-projection" class="btn ghost-btn">Share</button>
         </div>
       </details>
 
       <details class="accordion">
         <summary>History</summary>
         <ul id="cgpa-history" class="history-list"></ul>
-        <div class="buttons">
+        <div class="buttons" style="padding-top:0.6rem">
           <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
         </div>
       </details>
 
       <details class="accordion">
         <summary>How it works</summary>
-        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. Projection uses your current CGPA plus future GPA inputs.</p>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. Projection uses your current CGPA plus future GPA inputs to compute a weighted average across all credits.</p>
       </details>
     </section>
 
     <footer class="footer">
-      <p>&copy; 2025 Om Kumar • SRM University</p>
+      <p>&copy; 2025 Om Kumar · SRM University</p>
     </footer>
   </div>
   <script src="cgpa.js"></script>
