@@ -137,6 +137,10 @@ a {
   padding: clamp(24px, 5vw, 40px);
 }
 
+.hero-slim {
+  min-height: 0;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -417,6 +421,13 @@ select.field {
   margin-top: 26px;
 }
 
+.feature-strip {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-top: 18px;
+}
+
 .feature-card,
 .stat-card {
   padding: 18px;
@@ -435,6 +446,125 @@ select.field {
 .feature-card:hover {
   transform: translateY(-2px);
   border-color: rgba(125, 211, 252, 0.35);
+}
+
+.compact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 14px;
+}
+
+.compact-panel {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.accordion {
+  padding: 0;
+  border-radius: 18px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.accordion + .accordion {
+  margin-top: 12px;
+}
+
+.accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: "+";
+  color: var(--brand);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.accordion[open] summary::after {
+  content: "–";
+}
+
+.accordion > :not(summary) {
+  padding: 0 18px 18px;
+}
+
+.mini-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.visual-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-visual {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.mini-ring {
+  position: relative;
+  width: 170px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.24), transparent 30%),
+    conic-gradient(from 0deg, var(--brand-2), var(--brand), #f472b6, var(--brand-2));
+  padding: 12px;
+}
+
+.mini-ring::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: var(--panel-strong);
+}
+
+.mini-ring span {
+  position: absolute;
+  z-index: 1;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.mini-stack {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mini-chip {
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .feature-card h3,
@@ -685,5 +815,9 @@ select.field {
   .result-panel {
     position: sticky;
     top: 12px;
+  }
+
+  .mini-ring {
+    width: 140px;
   }
 }

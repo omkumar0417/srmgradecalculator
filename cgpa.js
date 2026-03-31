@@ -279,6 +279,8 @@ function calculateCgpa() {
     setMessage(currentMessageEl, parsed.error, 'error');
     if (currentStatusEl) currentStatusEl.textContent = 'Check entries';
     if (currentBreakdownEl) currentBreakdownEl.innerHTML = '<tr><td class="empty-state" colspan="4">Fix the highlighted row to continue.</td></tr>';
+    if (currentResultEl) currentResultEl.innerHTML = 'Calculation paused.<small>Fix the highlighted row to see the CGPA.</small>';
+    if (currentMetricsEl) currentMetricsEl.innerHTML = '';
     return;
   }
 
@@ -334,6 +336,8 @@ function calculateProjection() {
 
   if (parsed.error) {
     setMessage(projectionMessageEl, parsed.error, 'error');
+    if (projectionResultEl) projectionResultEl.innerHTML = 'Projection paused.<small>Fix the highlighted row to see the estimate.</small>';
+    if (projectionMetricsEl) projectionMetricsEl.innerHTML = '';
     return;
   }
 

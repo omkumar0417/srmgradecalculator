@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SRM GPA calculator with grade chart, backlog handling, shareable results, history, and subject-wise breakdown.">
+  <meta name="description" content="SRM GPA calculator with grade chart, history, and shareable results.">
   <meta name="keywords" content="SRM GPA Calculator, SGPA calculator, SRM Grade Tool, GPA Calculator SRM, Om Kumar, SRM University">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://srmgradecalculator.vercel.app/gpa.html">
   <title>GPA Calculator | SRM Grade Tool</title>
   <meta property="og:title" content="SRM GPA Calculator">
-  <meta property="og:description" content="Calculate SGPA using credits and grades with a clear SRM grade chart and shareable results.">
+  <meta property="og:description" content="Calculate SGPA using credits and grades.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/gpa.html">
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png">
@@ -41,28 +41,15 @@
     </header>
 
     <main class="calculator-grid">
-      <section class="panel hero-panel">
+      <section class="panel hero-panel hero-slim">
         <span class="eyebrow">GPA calculator</span>
-        <h1 class="title">Compute SGPA with a clean subject breakdown.</h1>
-        <p class="subtitle lede">Enter your subjects, credits, and grade points to calculate GPA. Empty rows are ignored, invalid entries are flagged, and the final summary can be copied or shared.</p>
-        <div class="stat-grid">
-          <div class="stat-card">
-            <h3>Grade chart</h3>
-            <p>SRM grades are explained clearly inside the page, including backlog grades.</p>
-            <strong>Guided</strong>
-          </div>
-          <div class="stat-card">
-            <h3>History</h3>
-            <p>Each valid calculation is saved locally for quick reference later.</p>
-            <strong>Saved</strong>
-          </div>
-          <div class="stat-card">
-            <h3>Share</h3>
-            <p>Copy a summary or send it straight from your phone with one tap.</p>
-            <strong>Easy</strong>
-          </div>
+        <h1 class="title">Calculate your SGPA.</h1>
+        <p class="subtitle lede">Add credits and grades, then copy or share the result.</p>
+        <div class="mini-pills">
+          <span class="pill">Grade chart</span>
+          <span class="pill">History</span>
+          <span class="pill">Backlogs</span>
         </div>
-        <p class="compact-note">Backlog handling: F, Ab, W, and I count as zero points in this calculator.</p>
       </section>
 
       <div class="section-stack">
@@ -80,14 +67,14 @@
                   <option value="8">A</option>
                   <option value="7">B+</option>
                   <option value="6">B</option>
-                  <option value="5">C</option>
+                  <option value="5.5">C</option>
                   <option value="0">F / Ab / W / I</option>
                 </select>
               </div>
             </div>
             <div class="buttons">
-              <button type="button" id="add-subject" class="btn gpa-btn">➕ Add Subject</button>
-              <button type="submit" class="btn cgpa-btn">Calculate GPA</button>
+              <button type="button" id="add-subject" class="btn gpa-btn">➕ Add</button>
+              <button type="submit" class="btn cgpa-btn">Calculate</button>
             </div>
           </form>
           <p id="gpa-message" class="message" aria-live="polite"></p>
@@ -98,13 +85,13 @@
             <h2 class="section-title">Result</h2>
             <span class="pill" id="gpa-status">Ready</span>
           </div>
-          <div id="result" class="result-value">No calculation yet.<small>Fill in the subjects above to see your GPA.</small></div>
+          <div id="result" class="result-value">No calculation yet.<small>Fill in the form to see your GPA.</small></div>
           <div class="metric-grid" id="gpa-metrics"></div>
           <div class="action-row">
-            <button type="button" id="copy-result" class="btn ghost-btn">Copy result</button>
-            <button type="button" id="share-result" class="btn ghost-btn">Share result</button>
+            <button type="button" id="copy-result" class="btn ghost-btn">Copy</button>
+            <button type="button" id="share-result" class="btn ghost-btn">Share</button>
           </div>
-          <h3 class="breakdown-title">Subject breakdown</h3>
+          <h3 class="breakdown-title">Breakdown</h3>
           <div class="table-wrap">
             <table class="data-table" aria-label="GPA breakdown">
               <thead>
@@ -122,60 +109,42 @@
       </div>
     </main>
 
-    <section class="section-stack">
-      <section class="panel content-panel">
-        <span class="pill">Grade chart</span>
-        <h2 class="section-title">SRM grade rules and backlog handling</h2>
+    <section class="panel content-panel compact-panel">
+      <details class="accordion" open>
+        <summary>Grade chart</summary>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
               <tr>
                 <th>Grade</th>
                 <th>Points</th>
-                <th>Meaning</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>O</td><td>10</td><td>Outstanding</td></tr>
-              <tr><td>A+</td><td>9</td><td>Excellent</td></tr>
-              <tr><td>A</td><td>8</td><td>Very good</td></tr>
-              <tr><td>B+</td><td>7</td><td>Good</td></tr>
-              <tr><td>B</td><td>6</td><td>Above average</td></tr>
-              <tr><td>C</td><td>5</td><td>Pass</td></tr>
-              <tr><td>F / Ab / W / I</td><td>0</td><td>Backlog or incomplete</td></tr>
+              <tr><td>O</td><td>10</td></tr>
+              <tr><td>A+</td><td>9</td></tr>
+              <tr><td>A</td><td>8</td></tr>
+              <tr><td>B+</td><td>7</td></tr>
+              <tr><td>B</td><td>6</td></tr>
+              <tr><td>C</td><td>5.5</td></tr>
+              <tr><td>F / Ab / W / I</td><td>0</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="compact-note">If you leave a row empty, it will be ignored. If you enter a credit value, choose a grade for that row so the calculator can validate it correctly.</p>
-      </section>
+      </details>
 
-      <section class="panel content-panel">
-        <span class="pill">Semester history</span>
-        <h2 class="section-title">Recent GPA calculations</h2>
+      <details class="accordion">
+        <summary>History</summary>
         <ul id="gpa-history" class="history-list"></ul>
         <div class="buttons">
           <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
         </div>
-      </section>
+      </details>
 
-      <section class="panel content-panel">
-        <span class="pill">FAQ</span>
-        <h2 class="section-title">GPA calculator questions</h2>
-        <div class="faq-grid">
-          <article class="faq-card">
-            <h3>What do blank rows do?</h3>
-            <p>Blank rows are ignored. That makes it easy to add extra rows before you finish entering subjects.</p>
-          </article>
-          <article class="faq-card">
-            <h3>Can I use backlog grades?</h3>
-            <p>Yes. F, Ab, W, and I are treated as zero points so their effect is visible in the result.</p>
-          </article>
-          <article class="faq-card">
-            <h3>Can I share the GPA?</h3>
-            <p>Yes. Use the copy or share buttons to send a text summary of your calculation.</p>
-          </article>
-        </div>
-      </section>
+      <details class="accordion">
+        <summary>How it works</summary>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. F, Ab, W, and I count as 0 points.</p>
+      </details>
     </section>
 
     <footer class="footer">

@@ -5,7 +5,7 @@ const gradeLabels = {
   '8': 'A',
   '7': 'B+',
   '6': 'B',
-  '5': 'C',
+  '5.5': 'C',
   '0': 'F / Ab / W / I',
 };
 
@@ -97,7 +97,7 @@ function addSubjectRow() {
       <option value="8">A</option>
       <option value="7">B+</option>
       <option value="6">B</option>
-      <option value="5">C</option>
+      <option value="5.5">C</option>
       <option value="0">F / Ab / W / I</option>
     </select>
   `;
@@ -191,6 +191,8 @@ function calculateGpa() {
     setMessage(parsed.error, 'error');
     if (statusEl) statusEl.textContent = 'Check entries';
     if (breakdownEl) breakdownEl.innerHTML = '<tr><td class="empty-state" colspan="4">Fix the highlighted row to continue.</td></tr>';
+    if (resultEl) resultEl.innerHTML = 'Calculation paused.<small>Fix the highlighted row to see the GPA.</small>';
+    if (metricsEl) metricsEl.innerHTML = '';
     return;
   }
 

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SRM CGPA calculator with semester history, projected CGPA planning, copy/share tools, and a clean breakdown.">
+  <meta name="description" content="SRM CGPA calculator with projection tools, history, and shareable results.">
   <meta name="keywords" content="SRM CGPA Calculator, CGPA calculator, SRM University grades, SRM GPA CGPA tool, Om Kumar, SRM University">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://srmgradecalculator.vercel.app/cgpa.html">
   <title>SRM CGPA Calculator | GPA & CGPA Tool by Om Kumar</title>
   <meta property="og:title" content="SRM CGPA Calculator">
-  <meta property="og:description" content="Calculate CGPA, save history, and project future semester outcomes for SRM University.">
+  <meta property="og:description" content="Calculate CGPA and project future semesters.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/cgpa.html">
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png">
@@ -41,26 +41,14 @@
     </header>
 
     <main class="calculator-grid">
-      <section class="panel hero-panel">
+      <section class="panel hero-panel hero-slim">
         <span class="eyebrow">CGPA calculator</span>
-        <h1 class="title">Track your overall CGPA and plan what comes next.</h1>
-        <p class="subtitle lede">Add each semester GPA with its credits to calculate your cumulative result. You can also project a future CGPA using expected semester grades and credits.</p>
-        <div class="stat-grid">
-          <div class="stat-card">
-            <h3>Completed semesters</h3>
-            <p>Combine past semester GPAs into a weighted CGPA result.</p>
-            <strong>Current</strong>
-          </div>
-          <div class="stat-card">
-            <h3>Projection</h3>
-            <p>Estimate your final CGPA by entering future semester targets.</p>
-            <strong>Forecast</strong>
-          </div>
-          <div class="stat-card">
-            <h3>Share</h3>
-            <p>Copy the result or share it instantly from the calculator.</p>
-            <strong>Simple</strong>
-          </div>
+        <h1 class="title">Calculate CGPA and plan ahead.</h1>
+        <p class="subtitle lede">Enter semester GPAs, then project future results if you want.</p>
+        <div class="mini-pills">
+          <span class="pill">Current</span>
+          <span class="pill">Projection</span>
+          <span class="pill">History</span>
         </div>
       </section>
 
@@ -76,8 +64,8 @@
               </div>
             </div>
             <div class="buttons">
-              <button type="button" id="add-semester" class="btn gpa-btn">➕ Add Semester</button>
-              <button type="submit" class="btn cgpa-btn">Calculate CGPA</button>
+              <button type="button" id="add-semester" class="btn gpa-btn">➕ Add</button>
+              <button type="submit" class="btn cgpa-btn">Calculate</button>
             </div>
           </form>
           <p id="cgpa-message" class="message" aria-live="polite"></p>
@@ -88,13 +76,13 @@
             <h2 class="section-title">Result</h2>
             <span class="pill" id="cgpa-status">Ready</span>
           </div>
-          <div id="cgpa-result" class="result-value">No calculation yet.<small>Add semester GPA and credits to see your CGPA.</small></div>
+          <div id="cgpa-result" class="result-value">No calculation yet.<small>Add semester GPA and credits.</small></div>
           <div class="metric-grid" id="cgpa-metrics"></div>
           <div class="action-row">
-            <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy result</button>
-            <button type="button" id="share-cgpa" class="btn ghost-btn">Share result</button>
+            <button type="button" id="copy-cgpa" class="btn ghost-btn">Copy</button>
+            <button type="button" id="share-cgpa" class="btn ghost-btn">Share</button>
           </div>
-          <h3 class="breakdown-title">Semester breakdown</h3>
+          <h3 class="breakdown-title">Breakdown</h3>
           <div class="table-wrap">
             <table class="data-table" aria-label="CGPA breakdown">
               <thead>
@@ -112,10 +100,9 @@
       </div>
     </main>
 
-    <section class="section-stack">
-      <section class="panel content-panel">
-        <span class="pill">Projected CGPA</span>
-        <h2 class="section-title">Plan your future semesters</h2>
+    <section class="panel content-panel compact-panel">
+      <details class="accordion" open>
+        <summary>Projected CGPA</summary>
         <form id="projection-form" novalidate>
           <div class="metric-grid">
             <label class="metric-card">
@@ -135,46 +122,31 @@
             </div>
           </div>
           <div class="buttons">
-            <button type="button" id="add-forecast-semester" class="btn gpa-btn">➕ Add Future Semester</button>
-            <button type="submit" class="btn cgpa-btn">Calculate Projection</button>
+            <button type="button" id="add-forecast-semester" class="btn gpa-btn">➕ Add</button>
+            <button type="submit" class="btn cgpa-btn">Calculate</button>
           </div>
         </form>
         <p id="projection-message" class="message" aria-live="polite"></p>
-        <div id="projection-result" class="result-value" style="margin-top: 12px;">No projection yet.<small>Enter current CGPA and future semesters to estimate the final result.</small></div>
+        <div id="projection-result" class="result-value" style="margin-top: 12px;">No projection yet.<small>Enter current CGPA and future semesters.</small></div>
         <div class="metric-grid" id="projection-metrics"></div>
         <div class="action-row">
-          <button type="button" id="copy-projection" class="btn ghost-btn">Copy projection</button>
-          <button type="button" id="share-projection" class="btn ghost-btn">Share projection</button>
+          <button type="button" id="copy-projection" class="btn ghost-btn">Copy</button>
+          <button type="button" id="share-projection" class="btn ghost-btn">Share</button>
         </div>
-      </section>
+      </details>
 
-      <section class="panel content-panel">
-        <span class="pill">Semester history</span>
-        <h2 class="section-title">Recent CGPA calculations</h2>
+      <details class="accordion">
+        <summary>History</summary>
         <ul id="cgpa-history" class="history-list"></ul>
         <div class="buttons">
           <button type="button" id="clear-history" class="btn ghost-btn">Clear history</button>
         </div>
-      </section>
+      </details>
 
-      <section class="panel content-panel">
-        <span class="pill">FAQ</span>
-        <h2 class="section-title">CGPA calculator questions</h2>
-        <div class="faq-grid">
-          <article class="faq-card">
-            <h3>What counts as CGPA?</h3>
-            <p>CGPA is a weighted average of semester GPAs, based on the number of credits in each semester.</p>
-          </article>
-          <article class="faq-card">
-            <h3>How does projection work?</h3>
-            <p>It combines your current CGPA with expected future semester GPAs and credits to estimate the final value.</p>
-          </article>
-          <article class="faq-card">
-            <h3>Can I leave a row blank?</h3>
-            <p>Yes. Blank rows are ignored, but partially filled rows are flagged so the calculation stays accurate.</p>
-          </article>
-        </div>
-      </section>
+      <details class="accordion">
+        <summary>How it works</summary>
+        <p class="compact-note">Blank rows are ignored. Partially filled rows are flagged. Projection uses your current CGPA plus future GPA inputs.</p>
+      </details>
     </section>
 
     <footer class="footer">
