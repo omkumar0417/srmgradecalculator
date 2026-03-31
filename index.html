@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Free SRM GPA and CGPA calculator for students. Calculate SGPA, check grade points, and track cumulative performance in seconds." />
+  <meta name="description" content="Free SRM GPA, SGPA and CGPA calculator for students. Calculate semester GPA from credits and grades, track cumulative CGPA, and get quick mobile-friendly results." />
   <meta name="keywords" content="SRM GPA calculator, SRM CGPA calculator, SRM SGPA calculator, SRM grade calculator, GPA calculator for SRM students" />
   <meta name="author" content="Om Kumar" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://srmgradecalculator.vercel.app/" />
-  <title>SRM GPA & CGPA Calculator | Free SGPA and CGPA Tool</title>
-  <meta property="og:title" content="SRM GPA & CGPA Calculator | Free SGPA and CGPA Tool" />
-  <meta property="og:description" content="Calculate SRM SGPA and CGPA instantly with free, mobile-friendly tools built for students." />
+  <title>SRM GPA, SGPA & CGPA Calculator | Free Online Grade Tool</title>
+  <meta property="og:title" content="SRM GPA, SGPA & CGPA Calculator | Free Online Grade Tool" />
+  <meta property="og:description" content="Calculate SRM GPA, SGPA and CGPA instantly with free, mobile-friendly tools built for students." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://srmgradecalculator.vercel.app/" />
   <meta property="og:site_name" content="SRM Grade Calculator" />
@@ -18,8 +18,8 @@
   <meta property="og:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta property="og:image:alt" content="SRM GPA and CGPA calculator preview" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SRM GPA & CGPA Calculator" />
-  <meta name="twitter:description" content="Free SRM GPA and CGPA calculator for quick SGPA and cumulative grade checks." />
+  <meta name="twitter:title" content="SRM GPA, SGPA & CGPA Calculator" />
+  <meta name="twitter:description" content="Free SRM GPA, SGPA and CGPA calculator for quick semester and cumulative grade checks." />
   <meta name="twitter:image" content="https://srmgradecalculator.vercel.app/image2.png" />
   <meta name="twitter:image:alt" content="SRM GPA and CGPA calculator preview" />
   <meta name="theme-color" content="#111317" />
@@ -92,6 +92,94 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between GPA, SGPA, and CGPA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On this website, GPA or SGPA means your semester result, while CGPA is your cumulative average across completed semesters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate SRM GPA online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the SRM GPA calculator to enter each subject credit and grade. The tool multiplies grade points by credits and divides the total by completed credits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which calculator should I use on this website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the GPA calculator for a single semester and the CGPA calculator for your overall performance across semesters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate CGPA from semester GPA values?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use the SRM CGPA calculator to enter each semester GPA and its total credits for a credit-weighted cumulative result."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are credits used in the SRM GPA calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each subject credit is multiplied by the grade point earned, and the final GPA is the total weighted points divided by total completed credits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can CGPA be different from a simple average?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CGPA is credit-weighted, so semesters with more credits influence the final value more than semesters with fewer credits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I estimate my SRM result before the final mark sheet is published?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If you know your expected grades and subject credits, you can use the calculator to estimate your semester GPA or cumulative CGPA before the official result is published."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this SRM grade calculator free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The SRM GPA and CGPA calculator is free, mobile-friendly, and does not require login."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the website store my marks or personal data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. You can use the calculator without creating an account, and the site is designed for quick checks without storing personal academic data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do failed or withheld grades affect GPA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. F, Ab, W, I, and withheld grades are treated as zero grade points in the GPA calculation."
+          }
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "name": "SRM Grade Calculator",
       "url": "https://srmgradecalculator.vercel.app/",
@@ -129,11 +217,11 @@
       <section class="panel hero-panel">
         <span class="eyebrow">SRM tools</span>
         <h1 class="title">
-          Grade tracking,<br>
-          <span class="title-accent">without the mess.</span>
+          SRM GPA, SGPA &<br>
+          <span class="title-accent">CGPA calculator.</span>
         </h1>
         <div class="hero-copy">
-          <p class="subtitle lede">Fast GPA and CGPA calculation built for SRM students. Answer first, breakdown after, nothing in the way.</p>
+          <p class="subtitle lede">Free online grade tool for SRM students to calculate semester GPA from credits and grades, track CGPA, and get fast mobile-friendly results.</p>
           <div class="trust-row">
             <span class="trust-chip">SRM grade mapping</span>
             <span class="trust-chip">No login</span>
@@ -189,16 +277,62 @@
     </main>
 
     <section class="panel compact-panel">
-      <div class="faq-stack" style="padding:1.5rem;">
-        <div class="faq-item">
-          <h2>Free SRM GPA and CGPA calculator for quick academic checks</h2>
-          <p>Use this website to calculate semester GPA (SGPA) from credits and grades or find your cumulative CGPA using semester-wise data. The tools are designed for fast input, clear validation, and mobile-friendly use.</p>
+      <details class="accordion" open>
+        <summary>What you can do here</summary>
+        <p class="compact-note">Use this free website to calculate SRM semester GPA (SGPA) from credits and grades, check your cumulative CGPA using semester-wise data, and get quick results on mobile without login.</p>
+        <p class="compact-note">Students often use it as an SRM GPA calculator, SRM SGPA calculator, and SRM CGPA calculator to verify semester results, estimate cumulative performance, and avoid manual credit-weighted calculations.</p>
+        <p class="compact-note"><a href="gpa.html">Open the GPA calculator</a> for one-semester results, <a href="cgpa.html">use the CGPA calculator</a> for cumulative tracking, or <a href="about.html">read about the website</a> and its creator.</p>
+      </details>
+
+      <details class="accordion">
+        <summary>Common questions from SRM students</summary>
+        <div class="faq-stack">
+          <div class="faq-item">
+            <strong>What is the difference between GPA, SGPA, and CGPA?</strong>
+            <p>On this website, GPA or SGPA refers to one semester result, while CGPA is your cumulative average across completed semesters.</p>
+          </div>
+          <div class="faq-item">
+            <strong>How do I calculate SRM GPA online?</strong>
+            <p>Open <a href="gpa.html">the GPA calculator</a>, enter each subject credit and grade, and the tool will calculate your SRM SGPA instantly using the weighted credit formula.</p>
+          </div>
+          <div class="faq-item">
+            <strong>How are credits used in the SRM GPA calculator?</strong>
+            <p>Each course credit is multiplied by the grade point you earned. The total weighted points are then divided by total completed credits to get GPA.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Which calculator should I use?</strong>
+            <p>Use <a href="gpa.html">the GPA calculator</a> for a single semester and <a href="cgpa.html">the CGPA calculator</a> for your overall performance.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I calculate CGPA from semester GPA values?</strong>
+            <p>Yes. Use <a href="cgpa.html">the CGPA calculator</a> to enter each semester GPA and its total credits for a credit-weighted cumulative result.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Why can CGPA be different from a simple average?</strong>
+            <p>CGPA is credit-weighted, so semesters with more total credits have a bigger effect on the final cumulative value.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I estimate my SRM result before the final mark sheet is published?</strong>
+            <p>Yes, if you already know your expected grades and credits. Enter them carefully to get an estimate before official results are released.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Is this SRM grade calculator free to use?</strong>
+            <p>Yes. The website is free, mobile-friendly, and does not require any login.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Does this SRM calculator work on mobile?</strong>
+            <p>Yes. The layout is optimized for quick GPA and CGPA checks on phones as well as desktops.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Does the website store my marks or personal data?</strong>
+            <p>No. You can use the calculator without creating an account, and it is designed for quick academic checks without storing personal data.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Do F, Ab, W, I, and withheld grades affect GPA?</strong>
+            <p>Yes. They are treated as zero grade points in the GPA calculation.</p>
+          </div>
         </div>
-        <div class="faq-item">
-          <h3>What you can do here</h3>
-          <p><a href="gpa.html">Open the GPA calculator</a> for one-semester results, <a href="cgpa.html">use the CGPA calculator</a> for cumulative tracking, or <a href="about.html">read about the website</a> and its creator.</p>
-        </div>
-      </div>
+      </details>
     </section>
 
     <footer class="footer footer-home">
