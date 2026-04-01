@@ -41,6 +41,14 @@
     .subtitle, .brand-subtitle, .tool-note { color: rgba(240,240,248,0.74); }
     .buttons, .hero-actions, .trust-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1rem; border-radius: 16px; background: #b9e85c; color: #0a1400; font-weight: 700; }
+    .ghost-btn { border: 1px solid rgba(185,232,92,0.9); background: rgba(27,33,45,0.9); color: #b9e85c; }
+    .content-panel h2.section-title { margin: 0; font-size: 1.05rem; letter-spacing: 0.01em; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.8rem; }
+    .result-value { min-height: 4rem; display: flex; align-items: center; justify-content: center; background: #0f172a; font-size: 1.4rem; font-weight: 700; border-color: #b9e85c; }
+    .metric-grid { display: grid; gap: 0.6rem; margin-top: 0.75rem; }
+    .metric-chip { padding: 0.55rem 0.65rem; border-radius: 12px; background: #1c1f2a; border: 1px solid rgba(255,255,255,0.08); }
+    .quick-guide { margin: 1rem 0 0.5rem; padding-left: 1.2rem; color: rgba(255,255,255,0.8); }
+    .quick-guide li { margin-bottom: 0.38rem; }
     .input-row, .semester-row { display: grid; gap: 0.6rem; padding: 0.75rem 0.85rem; background: #17171e; border-radius: 16px; }
     .field, .result-value { width: 100%; padding: 0.65rem 0.75rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #202028; color: #f0f0f8; }
     @media (max-width: 680px) { .site-shell { padding: 0.75rem; } .hero-panel, .content-panel { padding: 1rem; } .buttons, .hero-actions { flex-direction: column; } .btn { width: 100%; } }
@@ -187,6 +195,12 @@
           <span class="trust-chip">Partial rows are flagged</span>
           <span class="trust-chip">Works on phone</span>
         </div>
+        <ul class="quick-guide">
+          <li>GPA/SGPA = sum(credits × grade point) ÷ total credits.</li>
+          <li>Grades F/Ab/W/I/* count as 0 points (SRM policy).</li>
+          <li>Leave rows blank when not needed; partially filled rows are auto-validated.</li>
+          <li>Calculation is client-side only; no data is sent to servers.</li>
+        </ul>
       </section>
 
       <section class="panel content-panel calculator-input">
